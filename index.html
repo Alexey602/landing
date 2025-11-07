@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Репетитор Алексей</title>
+    <style>
+        /* Общие стили */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #f4f7f6;
+            --text-color: #333;
+            --white-color: #fff;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Плавная прокрутка */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        /* Навигационное меню */
+        .navbar {
+            background: var(--white-color);
+            color: var(--text-color);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin-left: 20px;
+        }
+
+        .navbar ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar ul li a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 0;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .navbar ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Гамбургер-меню для мобильных устройств */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            height: 3px;
+            width: 25px;
+            background-color: var(--text-color);
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        /* Главный раздел */
+        #hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white-color);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+             z-index: 1;
+        }
+
+        #hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        #hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .cta-button {
+            background: var(--white-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Анимированные фоновые фигуры */
+        #hero .bg-shapes div {
+            position: absolute;
+            bottom: -150px;
+            background: rgba(255, 255, 255, 0.15);
+            animation: animateShapes 25s linear infinite;
+        }
+
+        #hero .bg-shapes div:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+        #hero .bg-shapes div:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+        #hero .bg-shapes div:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+        #hero .bg-shapes div:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+        #hero .bg-shapes div:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+        #hero .bg-shapes div:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+
+        /* Раздел "Обо мне" */
+        #about .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text { flex: 1; }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 80%;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            object-fit: cover; /* Гарантирует, что изображение заполнит круг, не искажаясь */
+            aspect-ratio: 1 / 1; /* Делает изображение идеально круглым */
+        }
+        
+        .about-image img:hover { transform: scale(1.05); }
+
+        /* Раздел "Предметы" */
+        #subjects { background-color: var(--white-color); }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .subject-card {
+            background: var(--background-color);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .subject-card .icon { font-size: 3em; color: var(--primary-color); margin-bottom: 20px; }
+        .subject-card h3 { font-size: 1.5em; }
+
+        /* Раздел "Контакты" */
+        #contact .container { text-align: center; }
+        #contact p { font-size: 1.2em; margin-bottom: 30px; }
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+
+        /* Футер */
+        footer {
+            background: #333;
+            color: var(--white-color);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: var(--white-color);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                text-align: center;
+                padding-bottom: 15px;
+            }
+
+            .navbar ul.active { display: flex; }
+            .navbar ul li { margin: 15px 0; }
+            .menu-toggle { display: flex; }
+            
+            #hero h1 { font-size: 2.5em; }
+            #hero p { font-size: 1.2em; }
+            
+            #about .container { flex-direction: column-reverse; /* Фото будет сверху на мобильных */ }
+            .about-image img { max-width: 60%; margin-bottom: 30px; }
+        }
+        
+        /* Анимации */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes animateShapes {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+
+    </style>
+    <!-- Подключение иконок Font Awesome и шрифта Montserrat -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#hero" class="logo">Алексей</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#subjects">Предметы</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <div class="hero-content">
+            <h1>Знания, которые не влезут в голову, но поместятся в аттестат!</h1>
+            <p>Ваш персональный гид в мире сложных формул и непонятных правил.</p>
+            <a href="#contact" class="cta-button">Начать заниматься</a>
+        </div>
+        <div class="bg-shapes">
+            <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <div class="about-text">
+                    <h2>Кто я такой?</h2>
+                    <p>Привет! Меня зовут Алексей. Я помогаю школьникам и студентам разобраться в самых запутанных темах и превратить учебу из скучной обязанности в увлекательное приключение. Моя цель - не просто "натаскать" на экзамены, а научить думать, анализировать и не бояться сложных задач.</p>
+                    <p>Я верю, что каждый ученик способен на многое, главное – найти правильный подход. На моих занятиях мы будем много практиковаться, шутить и делать открытия. Вместе мы докажем, что гранит науки не такой уж и твердый!</p>
+                </div>
+                <div class="about-image">
+                    <!-- 
+                        ВАЖНО:
+                        Сохраните предоставленное изображение как "aleksey_photo.jpg" 
+                        в той же папке, что и этот HTML-файл.
+                    -->
+                    <img src="aleksey_photo.jpg" alt="Фото репетитора Алексея">
+                </div>
+            </div>
+        </section>
+
+        <section id="subjects">
+            <div class="container">
+                <h2>Что мы будем изучать?</h2>
+                <div class="subjects-grid">
+                    <div class="subject-card">
+                        <div class="icon"><i class="fas fa-calculator"></i></div>
+                        <h3>Математика</h3>
+                        <p>От арифметики до интегралов. Разберем все, что казалось невозможным. И да, мы выясним, куда все-таки плыл тот катер из точки А в точку Б.</p>
+                    </div>
+                    <div class="subject-card">
+                        <div class="icon"><i class="fas fa-atom"></i></div>
+                        <h3>Физика</h3>
+                        <p>Почему яблоко падает вниз, а самолет летит вверх? Изучим законы Вселенной на понятных примерах и без лишних сложностей.</p>
+                    </div>
+                    <div class="subject-card">
+                        <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Информатика</h3>
+                        <p>Научимся говорить с компьютером на "ты". От создания простых программ до понимания, как работает интернет. "Hello, world!" – это только начало.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Готовы начать?</h2>
+                <p>Не откладывайте свои успехи на завтра! Свяжитесь со мной, и мы обсудим, как сделать вашу учебу проще и интереснее.</p>
+                <div class="contact-buttons">
+                    <a href="tel:89199680802" class="cta-button">Позвонить: 8 (919) 968-08-02</a>
+                    <a href="mailto:alexey.tutor@example.com" class="cta-button">Написать на почту</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Репетитор Алексей. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        // Открытие/закрытие мобильного меню
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Если мобильное меню открыто, закрываем его
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
