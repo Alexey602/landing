@@ -3,424 +3,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Репетитор Алексей</title>
+    <title>Алексей | Репетитор (Math & IT)</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Общие стили */
+        /* --- 1. ПЕРЕМЕННЫЕ --- */
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --background-color: #f4f7f6;
-            --text-color: #333;
-            --white-color: #fff;
+            --primary: #6366f1;      /* Индиго */
+            --primary-dark: #4338ca;
+            --accent: #f43f5e;       /* Розовый неон */
+            --dark: #0f172a;         /* Темно-синий фон */
+            --dark-card: #1e293b;    /* Фон карточек */
+            --light: #f8fafc;
+            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth; /* Плавная прокрутка */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 80px;
         }
-
+        
         body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
+            font-family: var(--font-main);
+            color: #334155;
+            background-color: var(--light);
             line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 60px 0;
-        }
-
-        h1, h2, h3 {
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 40px;
+            overflow-x: hidden;
             position: relative;
         }
 
-        h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            margin: 10px auto;
+        /* --- 2. ГЛОБАЛЬНЫЙ ФОН (ОБНОВЛЕН) --- */
+        .global-math-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; 
+            background: radial-gradient(circle at center, #1e1b4b, #0f172a); /* Градиентный фон */
+            overflow: hidden; pointer-events: none;
         }
-
-        /* Навигационное меню */
-        .navbar {
-            background: var(--white-color);
-            color: var(--text-color);
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar .logo {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        .navbar ul li {
-            margin-left: 20px;
-        }
-
-        .navbar ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .navbar ul li a::after {
-            content: '';
-            display: block;
-            height: 2px;
-            width: 0;
-            background: var(--primary-color);
-            transition: width 0.3s;
-        }
-        
-        .navbar ul li a:hover::after {
-            width: 100%;
-        }
-        
-        .navbar ul li a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Гамбургер-меню для мобильных устройств */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .menu-toggle .bar {
-            height: 3px;
-            width: 25px;
-            background-color: var(--text-color);
-            margin: 4px 0;
-            transition: 0.4s;
-        }
-
-        /* Главный раздел */
-        #hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--white-color);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-             z-index: 1;
-        }
-
-        #hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            animation: fadeInDown 1s ease-in-out;
-        }
-
-        #hero p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease-in-out;
-        }
-
-        .cta-button {
-            background: var(--white-color);
-            color: var(--primary-color);
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Анимированные фоновые фигуры */
-        #hero .bg-shapes div {
+        .math-symbol {
             position: absolute;
-            bottom: -150px;
-            background: rgba(255, 255, 255, 0.15);
-            animation: animateShapes 25s linear infinite;
+            font-weight: bold; font-family: 'Times New Roman', serif; user-select: none;
+            text-shadow: 0 0 10px rgba(99, 102, 241, 0.5); /* Свечение */
         }
 
-        #hero .bg-shapes div:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
-        #hero .bg-shapes div:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
-        #hero .bg-shapes div:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
-        #hero .bg-shapes div:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
-        #hero .bg-shapes div:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
-        #hero .bg-shapes div:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
-
-        /* Раздел "Обо мне" */
-        #about .container {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-text { flex: 1; }
+        /* --- 3. БАЗОВЫЕ ЭЛЕМЕНТЫ --- */
+        img { display: block; max-width: 100%; height: auto; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        .about-image {
-            flex: 1;
-            text-align: center;
+        .btn {
+            display: inline-block; padding: 12px 28px;
+            background: var(--primary); color: white;
+            border-radius: 8px; font-weight: 600; border: none; cursor: pointer;
+            position: relative; overflow: hidden; z-index: 1;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
+        .btn::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--primary-dark); z-index: -1; transition: 0.3s;
+        }
+        .btn:hover::after { width: 100%; }
+        .btn-accent { background: var(--accent); box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); }
+        .btn-accent::after { background: #e11d48; }
 
-        .about-image img {
-            max-width: 80%;
-            border-radius: 50%;
+        /* --- 4. HEADER --- */
+        header {
+            background: rgba(15, 23, 42, 0.85); /* Чуть прозрачнее */
+            backdrop-filter: blur(15px);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: white; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 500; color: #cbd5e1; font-size: 0.95rem; cursor: pointer; }
+        .nav-links a:hover { color: var(--primary); }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+
+        /* --- 5. HERO SECTION --- */
+        .hero {
+            position: relative; min-height: 90vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white; background: transparent; padding-top: 50px;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 20px; }
+        .hero h1 {
+            font-size: 4rem; line-height: 1.1; margin-bottom: 20px; font-weight: 900;
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.8); /* Усилено свечение */
+        }
+        .typewriter { color: var(--accent); text-shadow: 0 0 15px rgba(244, 63, 94, 0.6); }
+        .hero p { font-size: 1.25rem; color: #e2e8f0; margin-bottom: 40px; max-width: 600px; margin: 0 auto 40px auto; }
+
+        /* --- 6. ОБО МНЕ (ПРОЗРАЧНОСТЬ) --- */
+        .section-light {
+            background: rgba(255, 255, 255, 0.85); /* Сильно прозрачнее, чтобы видны были символы */
+            backdrop-filter: blur(12px);
+            padding: 100px 0;
+            border-radius: 40px 40px 0 0;
+            margin-top: -50px;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+        }
+        .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; align-items: center; }
+        .my-photo {
+            border-radius: 20px; box-shadow: 20px 20px 0 var(--primary);
+            width: 100%; height: 500px; object-fit: cover; transition: 0.3s;
+        }
+        .my-photo:hover { transform: translate(-10px, -10px); box-shadow: 30px 30px 0 var(--accent); }
+        .about-text h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--dark); font-weight: 800; }
+        .stats-row { display: flex; gap: 40px; margin-top: 30px; border-top: 1px solid #cbd5e1; padding-top: 30px; }
+        .stat-item strong { display: block; font-size: 2.5rem; color: var(--accent); line-height: 1; }
+        .stat-item span { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; color: #475569; }
+
+        /* --- 7. НАПРАВЛЕНИЯ (ПРОЗРАЧНОСТЬ) --- */
+        .section-dark { padding: 100px 0; position: relative; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 50px; }
+        .tech-card {
+            background: rgba(30, 41, 59, 0.6); /* Полупрозрачный темный */
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.15); padding: 35px; border-radius: 16px;
+            transition: 0.3s; position: relative; overflow: hidden; color: white;
+        }
+        .tech-card:hover { transform: translateY(-7px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3); background: rgba(30, 41, 59, 0.8); }
+        .card-icon { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .tech-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .tech-card li { margin-bottom: 10px; color: #cbd5e1; padding-left: 20px; position: relative; }
+        .tech-card li::before { content: '>'; color: var(--primary); position: absolute; left: 0; font-weight: bold; }
+
+        /* --- 8. ПРОЦЕСС --- */
+        .process-section { padding: 80px 0 80px 0; margin-top: 0; border-radius: 0; }
+        .process-box {
+            background: rgba(255, 255, 255, 0.9); /* Тоже чуть прозрачно */
+            padding: 30px; border-radius: 12px;
+            width: 300px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary); text-align: center;
+        }
+        .process-row { display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+        .p-icon { font-size: 2rem; color: var(--dark); margin-bottom: 15px; }
+
+        /* --- 9. FAQ --- */
+        .faq-section { 
+            padding: 80px 0; 
+            background: transparent; /* Полностью прозрачный фон секции */
+        }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            background: rgba(15, 23, 42, 0.7); /* Темный полупрозрачный */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px; margin-bottom: 15px; overflow: hidden; transition: 0.3s;
+        }
+        .faq-item:hover { border-color: var(--primary); box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
+        
+        .faq-question {
+            padding: 20px 25px; cursor: pointer; font-weight: 600; color: white;
+            font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-question i { transition: 0.3s; color: var(--primary); }
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: 0.4s ease; padding: 0 25px;
+            color: #cbd5e1; font-size: 0.95rem; opacity: 0;
+        }
+        .faq-item.active .faq-answer { padding-bottom: 25px; max-height: 300px; opacity: 1; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); color: var(--accent); }
+        .faq-item.active { background: rgba(30, 41, 59, 0.9); border-color: var(--primary); }
+
+        /* --- 10. КОНТАКТЫ --- */
+        .contacts-section { padding-bottom: 50px; padding-top: 50px; }
+        .footer-box {
+            background: rgba(15, 23, 42, 0.8); /* Прозрачный темный */
+            backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px; padding: 60px; text-align: center; color: white;
+            position: relative; z-index: 2;
+        }
+        .contact-grid { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
+        .contact-btn {
+            background: white; color: var(--primary-dark);
+            padding: 15px 30px; border-radius: 50px; font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .contact-btn:hover { background: var(--dark); color: white; }
+
+        /* --- 11. ИНТЕРАКТИВ --- */
+        .trap-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; cursor: pointer; }
+        .trap-card {
+            background: var(--dark); color: white; padding: 15px 25px; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 15px;
+            border: 1px solid rgba(255,255,255,0.1); animation: bounceIn 1s;
+        }
+        .trap-icon { color: var(--accent); animation: pulse 2s infinite; font-size: 1.5rem; }
+        .promo-sticky {
+            position: fixed; bottom: 30px; right: 30px; background: #ecfdf5; border: 2px dashed #10b981;
+            padding: 15px 25px; border-radius: 12px; z-index: 2000; display: none;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            object-fit: cover; /* Гарантирует, что изображение заполнит круг, не искажаясь */
-            aspect-ratio: 1 / 1; /* Делает изображение идеально круглым */
         }
-        
-        .about-image img:hover { transform: scale(1.05); }
-
-        /* Раздел "Предметы" */
-        #subjects { background-color: var(--white-color); }
-
-        .subjects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.95); z-index: 3000;
+            justify-content: center; align-items: center; backdrop-filter: blur(5px);
         }
-
-        .subject-card {
-            background: var(--background-color);
-            padding: 30px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .modal-content {
+            background: white; padding: 40px; border-radius: 16px; width: 90%; max-width: 480px; text-align: center; position: relative;
         }
+        .task-box { background: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: left; border-left: 4px solid var(--primary); }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+        @keyframes bounceIn { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
-        .subject-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .my-photo { height: 400px; } 
+            .section-light { margin-top: 0; border-radius: 20px; }
         }
-
-        .subject-card .icon { font-size: 3em; color: var(--primary-color); margin-bottom: 20px; }
-        .subject-card h3 { font-size: 1.5em; }
-
-        /* Раздел "Контакты" */
-        #contact .container { text-align: center; }
-        #contact p { font-size: 1.2em; margin-bottom: 30px; }
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-
-        /* Футер */
-        footer {
-            background: #333;
-            color: var(--white-color);
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .navbar ul {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: var(--white-color);
-                position: absolute;
-                top: 60px;
-                left: 0;
-                text-align: center;
-                padding-bottom: 15px;
-            }
-
-            .navbar ul.active { display: flex; }
-            .navbar ul li { margin: 15px 0; }
-            .menu-toggle { display: flex; }
-            
-            #hero h1 { font-size: 2.5em; }
-            #hero p { font-size: 1.2em; }
-            
-            #about .container { flex-direction: column-reverse; /* Фото будет сверху на мобильных */ }
-            .about-image img { max-width: 60%; margin-bottom: 30px; }
-        }
-        
-        /* Анимации */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes animateShapes {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
-            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
-        }
-
     </style>
-    <!-- Подключение иконок Font Awesome и шрифта Montserrat -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <a href="#hero" class="logo">Алексей</a>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#subjects">Предметы</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-            <div class="menu-toggle" id="menu-toggle">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-    </nav>
+    <!-- ФОН С ЛЕТАЮЩИМИ СИМВОЛАМИ -->
+    <div class="global-math-bg" id="mathBg"></div>
 
-    <header id="hero">
-        <div class="hero-content">
-            <h1>Знания, которые не влезут в голову, но поместятся в аттестат!</h1>
-            <p>Ваш персональный гид в мире сложных формул и непонятных правил.</p>
-            <a href="#contact" class="cta-button">Начать заниматься</a>
-        </div>
-        <div class="bg-shapes">
-            <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+    <!-- HEADER -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">Alexey<span>.Tutor</span></div>
+            <nav class="nav-links">
+                <a href="#about">Обо мне</a>
+                <a href="#skills">Направления</a>
+                <a href="#process">Процесс</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <a href="#contacts" class="btn btn-accent">Записаться</a>
         </div>
     </header>
 
-    <main>
-        <section id="about">
-            <div class="container">
-                <div class="about-text">
-                    <h2>Кто я такой?</h2>
-                    <p>Привет! Меня зовут Алексей. Я помогаю школьникам и студентам разобраться в самых запутанных темах и превратить учебу из скучной обязанности в увлекательное приключение. Моя цель - не просто "натаскать" на экзамены, а научить думать, анализировать и не бояться сложных задач.</p>
-                    <p>Я верю, что каждый ученик способен на многое, главное – найти правильный подход. На моих занятиях мы будем много практиковаться, шутить и делать открытия. Вместе мы докажем, что гранит науки не такой уж и твердый!</p>
-                </div>
-                <div class="about-image">
-                    <!-- 
-                        ВАЖНО:
-                        Сохраните предоставленное изображение как "aleksey_photo.jpg" 
-                        в той же папке, что и этот HTML-файл.
-                    -->
-                    <img src="aleksey_photo.jpg" alt="Фото репетитора Алексея">
-                </div>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Твой ментор по <br><span class="typewriter"></span></h1>
+            <p>Забудь про скучные лекции. Объясняю сложное простым языком, готовлю к экзаменам и учу кодить.</p>
+            <div style="margin-top: 30px;">
+                <a href="#about" class="btn btn-accent" style="margin-right: 15px;">Познакомиться</a>
+                <a href="#skills" class="btn">Чему я учу?</a>
             </div>
-        </section>
-
-        <section id="subjects">
-            <div class="container">
-                <h2>Что мы будем изучать?</h2>
-                <div class="subjects-grid">
-                    <div class="subject-card">
-                        <div class="icon"><i class="fas fa-calculator"></i></div>
-                        <h3>Математика</h3>
-                        <p>От арифметики до интегралов. Разберем все, что казалось невозможным. И да, мы выясним, куда все-таки плыл тот катер из точки А в точку Б.</p>
-                    </div>
-                    <div class="subject-card">
-                        <div class="icon"><i class="fas fa-atom"></i></div>
-                        <h3>Физика</h3>
-                        <p>Почему яблоко падает вниз, а самолет летит вверх? Изучим законы Вселенной на понятных примерах и без лишних сложностей.</p>
-                    </div>
-                    <div class="subject-card">
-                        <div class="icon"><i class="fas fa-laptop-code"></i></div>
-                        <h3>Информатика</h3>
-                        <p>Научимся говорить с компьютером на "ты". От создания простых программ до понимания, как работает интернет. "Hello, world!" – это только начало.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="container">
-                <h2>Готовы начать?</h2>
-                <p>Не откладывайте свои успехи на завтра! Свяжитесь со мной, и мы обсудим, как сделать вашу учебу проще и интереснее.</p>
-                <div class="contact-buttons">
-                    <a href="tel:89199680802" class="cta-button">Позвонить: 8 (919) 968-08-02</a>
-                    <a href="mailto:alexey.tutor@example.com" class="cta-button">Написать на почту</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Репетитор Алексей. Все права защищены.</p>
         </div>
-    </footer>
-    
+    </section>
+
+    <!-- ОБО МНЕ -->
+    <section id="about" class="section-light">
+        <div class="container about-grid">
+            <div class="my-photo-container">
+                <img src="alexey.jpg" 
+                     alt="Алексей Репетитор" 
+                     class="my-photo"
+                     onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'height:500px; background:#e2e8f0; display:flex; align-items:center; justify-content:center; border-radius:20px; color:#64748b; font-weight:bold;\'>Фото alexey.jpg не найдено</div>'">
+            </div>
+            <div class="about-text">
+                <h2>Привет, я Алексей! 👋</h2>
+                <p>Я не типичный школьный учитель с указкой. Я верю, что учёба должна быть в кайф, а не каторгой.</p>
+                <p>Со мной можно (и нужно) задавать глупые вопросы, ошибаться и шутить. Главное — мы идем к результату. Я помогаю не просто «сдать и забыть», а понять логику, которая пригодится в IT и жизни.</p>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <strong>3+</strong><span>Года опыта</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>40+</strong><span>Учеников</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- НАПРАВЛЕНИЯ -->
+    <section id="skills" class="section-dark">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 20px;">Чему я <span style="color: var(--primary);">обучаю</span></h2>
+            <div class="cards-grid">
+                <div class="tech-card">
+                    <div class="card-icon"><i class="fas fa-cube"></i></div>
+                    <h3>Математика 5–8</h3>
+                    <ul>
+                        <li>Закрываем пробелы</li>
+                        <li>Помогаю с домашкой без нервов</li>
+                        <li>Развиваем логику, а не зубрежку</li>
+                        <li>Подготовка к ВПР</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <div class="card-icon"><i class="fas fa-square-root-alt"></i></div>
+                    <h3>Математика 9–11</h3>
+                    <ul>
+                        <li>ОГЭ: Разбираем все типы заданий</li>
+                        <li>ЕГЭ (База/Профиль)</li>
+                        <li>Алгебра и Геометрия без боли</li>
+                        <li>Поступление в тех. вузы</li>
+                    </ul>
+                </div>
+                <div class="tech-card" style="border-color: var(--accent);">
+                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Информатика & IT</h3>
+                    <ul>
+                        <li>Подготовка к ОГЭ/ЕГЭ по информатике</li>
+                        <li><strong>Python</strong>: от "Hello World" до проектов</li>
+                        <li>Алгоритмы и структуры данных</li>
+                        <li>Основы разработки</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРОЦЕСС -->
+    <section id="process" class="section-light process-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; color: var(--dark); font-weight: 800;">Где проходят <span style="color: var(--primary);">занятия?</span></h2>
+            <div class="process-row">
+                <div class="process-box">
+                    <div class="p-icon"><i class="fab fa-discord"></i></div>
+                    <h4>Связь</h4>
+                    <p>Созваниваемся в <strong>Microsoft Teams</strong> или <strong>Discord</strong>. Стабильная связь, демонстрация экрана.</p>
+                </div>
+                <div class="process-box">
+                    <div class="p-icon"><i class="fas fa-pen-nib"></i></div>
+                    <h4>Практика</h4>
+                    <p>Пишем на онлайн-доске <strong>Idroo</strong>. Это как обычная доска, только бесконечная и в браузере.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 40px;">Частые <span style="color: var(--primary);">вопросы</span></h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Занимаетесь ли вы летом? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Да, конечно! Лето — идеальное время, чтобы без школьной гонки закрыть накопившиеся пробелы, спокойно разобрать сложные темы или заранее подготовиться к экзаменационному классу.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Что если ребенок заболел или не может прийти? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Форс-мажоры случаются, это нормально. Пожалуйста, предупреждайте об отмене или переносе занятия как можно раньше (желательно за сутки). Это позволит мне скорректировать график, а вам — спокойно спланировать свой день.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Нужна ли веб-камера на занятиях? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Желательно, чтобы она была. Визуальный контакт помогает создать атмосферу присутствия. Я вижу реакцию ученика: понял он тему или сомневается, устал или полон сил. Это делает урок намного эффективнее.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contacts" class="contacts-section">
+        <div class="container">
+            <div class="footer-box">
+                <h2 style="margin-bottom: 15px; font-size: 2rem;">Готов прокачать мозги?</h2>
+                <p style="opacity: 0.9;">Запишись на пробное занятие, чтобы познакомиться.</p>
+                <div class="contact-grid">
+                    <a href="tel:89199680802" class="contact-btn"><i class="fas fa-phone-alt"></i> 8 (919) 968-08-02</a>
+                    <a href="https://t.me/bananabane" target="_blank" class="contact-btn"><i class="fab fa-telegram-plane"></i> @bananabane</a>
+                    <a href="https://wa.me/79199680802" target="_blank" class="contact-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ИНТЕРАКТИВ -->
+    <div id="trap-widget" class="trap-widget">
+        <div class="trap-card">
+            <i class="fas fa-brain trap-icon"></i>
+            <div style="line-height: 1.2;">
+                <strong>Разминка для ума</strong><br>
+                <span style="font-size: 0.8rem; opacity: 0.7;">Реши задачу — получи скидку</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="promo-sticky" class="promo-sticky">
+        <small style="color: #047857; font-weight: bold;">Скидка на первое занятие:</small>
+        <div class="code">LOGIC25</div>
+    </div>
+
+    <div id="quiz-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span id="close-modal" class="close-icon" style="color: black; font-size: 1.5rem; position:absolute; top:15px; right:20px; cursor:pointer;">&times;</span>
+            <h3 style="color: var(--primary); margin-bottom: 10px;">Логическая задача</h3>
+            <div class="task-box">
+                <p style="margin-bottom: 10px;">Тетрадь и ручка вместе стоят <strong>110 рублей</strong>.</p>
+                <p>Тетрадь дороже ручки ровно на <strong>100 рублей</strong>.</p>
+                <hr style="margin: 15px 0; border: 0; border-top: 1px solid #cbd5e1;">
+                <p style="font-weight: bold; color: var(--dark);">Сколько стоит ручка?</p>
+            </div>
+            <input type="number" id="quiz-answer" placeholder="Цена ручки (число)" style="width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; margin-bottom: 20px; text-align: center; font-size: 1.1rem; outline: none;">
+            <button onclick="checkAnswer()" class="btn btn-accent" style="width: 100%;">Проверить</button>
+            <div id="quiz-error" style="color: #ef4444; margin-top: 15px; font-weight: bold; display: none;"></div>
+        </div>
+    </div>
+
     <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.getElementById('nav-links');
-
-        // Открытие/закрытие мобильного меню
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        // --- АНИМАЦИЯ ФОНА (УЛУЧШЕННАЯ) ---
+        const symbols = ['π', 'x', '∫', '%', '√', '∑', '∞', 'y', '≠', '≈', '{ }', 'sin', 'log'];
+        const bgContainer = document.getElementById('mathBg');
         
-        // Плавная прокрутка для якорных ссылок
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Увеличили количество до 50
+        for(let i=0; i<50; i++) {
+            let el = document.createElement('div');
+            el.classList.add('math-symbol');
+            el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            // Случайная позиция
+            el.style.left = Math.random() * 100 + '%';
+            
+            // Размер стал больше (от 30 до 70px)
+            el.style.fontSize = (Math.random() * 40 + 30) + 'px';
+            
+            // Яркость и цвет (Синий или Розовый)
+            const isAccent = Math.random() > 0.8; // 20% символов будут розовыми
+            if(isAccent) {
+                el.style.color = "rgba(244, 63, 94, 0.4)"; // Розовый
+            } else {
+                el.style.color = "rgba(99, 102, 241, 0.35)"; // Индиго (более яркий, чем раньше)
+            }
+            
+            // Анимация
+            let duration = Math.random() * 20 + 15;
+            el.animate([
+                { transform: `translateY(110vh) rotate(0deg)`, opacity: 0 },
+                { opacity: 0.8, offset: 0.2 }, // Более заметные в середине
+                { opacity: 0.8, offset: 0.8 },
+                { transform: `translateY(-10vh) rotate(360deg)`, opacity: 0 }
+            ], {
+                duration: duration * 1000,
+                iterations: Infinity,
+                delay: Math.random() * 20000
+            });
+            bgContainer.appendChild(el);
+        }
 
-                // Если мобильное меню открыто, закрываем его
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                }
+        // --- ПЕЧАТНАЯ МАШИНКА ---
+        const typeText = document.querySelector('.typewriter');
+        const phrases = ["Математике", "Информатике", "Python"];
+        let phraseIndex = 0; let charIndex = 0; let isDeleting = false;
 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        function type() {
+            const current = phrases[phraseIndex];
+            typeText.textContent = current.substring(0, charIndex + (isDeleting ? -1 : 1));
+            charIndex += isDeleting ? -1 : 1;
+            if (!isDeleting && charIndex === current.length) {
+                isDeleting = true; setTimeout(type, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 500);
+            } else { setTimeout(type, isDeleting ? 100 : 150); }
+        }
+        document.addEventListener('DOMContentLoaded', type);
+
+        // --- FAQ ---
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                item.classList.toggle('active');
             });
         });
+
+        // --- ЛОГИКА ЗАДАЧИ ---
+        const widget = document.getElementById('trap-widget');
+        const modal = document.getElementById('quiz-modal');
+        const stickyPromo = document.getElementById('promo-sticky');
+        const input = document.getElementById('quiz-answer');
+        const errorMsg = document.getElementById('quiz-error');
+        const closeIcon = document.getElementById('close-modal');
+
+        widget.onclick = () => modal.style.display = 'flex';
+        closeIcon.onclick = () => { modal.style.display = 'none'; errorMsg.style.display = 'none'; };
+        window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+
+        function checkAnswer() {
+            const val = parseFloat(input.value);
+            if(val === 5) {
+                modal.style.display = 'none';
+                widget.style.display = 'none';
+                stickyPromo.style.display = 'block';
+                alert("Верно! Скидка на первое занятие ваша.");
+            } else if (val === 10) {
+                errorMsg.style.display = 'block';
+                errorMsg.innerHTML = "Попался! 110 + 10 = 120. Думай еще!";
+            } else {
+                errorMsg.style.display = 'block';
+                errorMsg.innerHTML = "Неверно.";
+            }
+        }
     </script>
 </body>
 </html>
