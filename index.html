@@ -292,10 +292,11 @@
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1rem; }
             .hero-buttons { flex-direction: column; gap: 15px; }
-            .my-photo { height: 350px; }
+            .my-photo { height: 280px; object-fit: contain; margin: 20px auto; }
             .tech-card { padding: 20px; }
             .faq-container { padding: 0 10px; }
             .footer-box { padding: 40px 20px; }
+            .typewriter { font-size: 1.8rem; line-height: 1.2; }
         }
 
         @media (min-width: 1200px) {
@@ -601,6 +602,16 @@
             }
             .floating-element {
                 animation: none;
+            }
+        }
+
+        /* Дополнительная оптимизация для очень маленьких экранов */
+        @media (max-width: 480px) {
+            .hero-title-3d {
+                font-size: 3.5rem; /* Уменьшаем еще больше для лучшей стабильности */
+            }
+            .typewriter {
+                white-space: nowrap; /* Предотвращаем перенос строк в typewriter */
             }
         }
 
