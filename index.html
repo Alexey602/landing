@@ -3,18 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Алексей Плешков | Репетитор (Math & IT)</title>
+    <title>Алексей | Репетитор (Math & IT)</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Репетитор по математике и информатике. Подготовка к ОГЭ, ЕГЭ, обучение Python. Онлайн занятия в Teams/Discord. Забудь про скучные лекции - объясняю просто!">
+    <meta name="keywords" content="репетитор математика, репетитор информатика, ОГЭ математика, ЕГЭ математика, Python обучение, онлайн репетитор, подготовка к экзаменам">
+    <meta name="author" content="Алексей Плешков">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alexey602.github.io/landing/">
+    <meta property="og:title" content="Алексей Плешков | Репетитор (Math & IT)">
+    <meta property="og:description" content="Репетитор по математике и информатике. Подготовка к ОГЭ, ЕГЭ, обучение Python. Онлайн занятия в Teams/Discord.">
+    <meta property="og:image" content="https://alexey602.github.io/landing/alexey.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://alexey602.github.io/landing/">
+    <meta property="twitter:title" content="Алексей Плешков | Репетитор (Math & IT)">
+    <meta property="twitter:description" content="Репетитор по математике и информатике. Подготовка к ОГЭ, ЕГЭ, обучение Python. Онлайн занятия в Teams/Discord.">
+    <meta property="twitter:image" content="https://alexey602.github.io/landing/alexey.jpg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Cyber Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Lenis for smooth scrolling -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.38/lenis.min.js" defer></script>
+
     <style>
         /* --- 1. ПЕРЕМЕННЫЕ --- */
         :root {
-            --primary: #6366f1;      /* Индиго */
-            --primary-dark: #4338ca;
-            --accent: #f43f5e;       /* Розовый неон */
-            --dark: #0f172a;         /* Темно-синий фон */
-            --dark-card: #1e293b;    /* Фон карточек */
-            --light: #f8fafc;
+            --primary: #3730a3;      /* Более глубокий индиго */
+            --primary-dark: #1e1b4b;
+            --accent: #be185d;       /* Темный розовый неон */
+            --dark: #0c0a09;         /* Почти черный для премиальности */
+            --dark-card: #1c1917;    /* Темный с серым оттенком */
+            --light: #fafaf9;        /* Кремовый светлый */
             --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-cyber: 'Cinzel', 'Space Grotesk', serif; /* Премиальный шрифт */
+            --font-mono: 'JetBrains Mono', monospace;
+            --cyber-blue: #0891b2;   /* Темный циан */
+            --cyber-purple: #581c87; /* Более глубокий фиолет */
+            --cyber-neon: #047857;   /* Темный изумрудный зеленый */
+            --gold: #d97706;         /* Темный золотой */
+            --platinum: #e5e4e2;     /* Платиновый */
+            
+            /* ИЗМЕНЕНО: Фон сделан ровно как на reference сайте (Deep Space Black) */
+            --premium-gradient: #050816; 
+            
+            --gold-gradient: linear-gradient(135deg, #d97706, #b45309, #92400e);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,17 +70,157 @@
             position: relative;
         }
 
-        /* --- 2. ГЛОБАЛЬНЫЙ ФОН (ОБНОВЛЕН) --- */
+        /* --- 2. ГЛОБАЛЬНЫЙ ФОН (ПРЕМИАЛЬНЫЙ) --- */
         .global-math-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; 
-            background: radial-gradient(circle at center, #1e1b4b, #0f172a); /* Градиентный фон */
+            z-index: -1;
+            background: var(--premium-gradient); /* Теперь здесь #050816 */
             overflow: hidden; pointer-events: none;
         }
         .math-symbol {
             position: absolute;
-            font-weight: bold; font-family: 'Times New Roman', serif; user-select: none;
-            text-shadow: 0 0 10px rgba(99, 102, 241, 0.5); /* Свечение */
+            font-weight: bold; font-family: var(--font-cyber), serif; user-select: none;
+            text-shadow: 0 0 15px var(--gold), 0 0 30px var(--cyber-blue); /* Золотое свечение */
+            color: var(--platinum);
+        }
+
+        /* --- УПРОЩЕННЫЕ ФОНОВЫЕ ЭЛЕМЕНТЫ --- */
+        /* Параллакс-слои убраны для лучшей фокусировки на контенте */
+
+        /* --- ВРАЩАЮЩИЕСЯ МАТЕМАТИЧЕСКИЕ ФИГУРЫ --- */
+        .math-shape {
+            position: absolute;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Куб */
+        .shape-cube {
+            border: 2px solid;
+            transform-style: preserve-3d;
+            animation: floatRotate 20s linear infinite;
+        }
+
+        .shape-cube::before,
+        .shape-cube::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid;
+            opacity: 0.6;
+        }
+
+        .shape-cube::before {
+            transform: rotateX(90deg) translateZ(50%);
+        }
+
+        .shape-cube::after {
+            transform: rotateY(90deg) translateZ(50%);
+        }
+
+        /* Сфера */
+        .shape-sphere {
+            border-radius: 50%;
+            border: 2px solid;
+            background: radial-gradient(circle, transparent 30%, currentColor 70%);
+            animation: floatRotate 25s linear infinite reverse;
+        }
+
+        /* Цилиндр */
+        .shape-cylinder {
+            border: 2px solid;
+            border-radius: 50% / 25%;
+            position: relative;
+            animation: floatRotate 18s linear infinite;
+        }
+
+        .shape-cylinder::before,
+        .shape-cylinder::after {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 20%;
+            border: 2px solid;
+            opacity: 0.7;
+            border-radius: 50%;
+        }
+
+        .shape-cylinder::before {
+            top: -10%;
+            left: 10%;
+        }
+
+        .shape-cylinder::after {
+            bottom: -10%;
+            left: 10%;
+        }
+
+        /* Тетраэдр */
+        .shape-tetrahedron {
+            border: 2px solid;
+            position: relative;
+            animation: floatRotate 22s linear infinite;
+        }
+
+        .shape-tetrahedron::before,
+        .shape-tetrahedron::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: calc(var(--size) / 2) solid transparent;
+            border-right: calc(var(--size) / 2) solid transparent;
+            border-bottom: calc(var(--size) * 0.866) solid;
+            opacity: 0.8;
+        }
+
+        .shape-tetrahedron::before {
+            top: -50%;
+            left: 0;
+            transform: rotateX(60deg);
+        }
+
+        .shape-tetrahedron::after {
+            bottom: -50%;
+            left: 0;
+            transform: rotateX(-60deg);
+        }
+
+        /* Шестиугольник */
+        .shape-hexagon {
+            position: relative;
+            animation: floatRotate 16s linear infinite reverse;
+        }
+
+        .shape-hexagon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: currentColor;
+            clip-path: polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%);
+            opacity: 0.4;
+        }
+
+        /* Анимация вращения */
+        @keyframes floatRotate {
+            from { transform: rotate(0deg) translateY(0px); }
+            to { transform: rotate(360deg) translateY(-50px); }
+        }
+
+        /* --- NOISE TEXTURE OVERLAY --- */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1001;
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOCIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiLz48L3N2Zz4=');
+            mix-blend-mode: overlay;
         }
 
         /* --- 3. БАЗОВЫЕ ЭЛЕМЕНТЫ --- */
@@ -74,49 +251,367 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-size: 1.4rem; font-weight: 800; color: white; }
+    .logo { font-size: 1.4rem; font-weight: 800; color: white; user-select: none; cursor: pointer; transition: all 0.3s; }
         .logo span { color: var(--primary); }
         .nav-links { display: flex; gap: 30px; }
         .nav-links a { font-weight: 500; color: #cbd5e1; font-size: 0.95rem; cursor: pointer; }
         .nav-links a:hover { color: var(--primary); }
-        @media (max-width: 768px) { .nav-links { display: none; } }
+
+        /* Hamburger Menu */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 4px; }
+        .hamburger span { width: 25px; height: 3px; background: white; transition: 0.3s; border-radius: 2px; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+        .mobile-menu { display: none; position: fixed; top: 70px; left: 0; width: 100%; height: calc(100vh - 70px); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; gap: 30px; }
+        .mobile-menu a { font-size: 1.5rem; color: white; text-decoration: none; transition: 0.3s; }
+        .mobile-menu a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .mobile-menu { display: none; }
+            .mobile-menu.active { display: flex; }
+
+            /* Мобильная оптимизация */
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.1rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .my-photo { height: 400px; }
+            .stats-row { flex-direction: column; gap: 20px; text-align: center; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .tech-card { padding: 25px; }
+            .process-row { flex-direction: column; gap: 20px; }
+            .process-box { width: 100%; }
+            .contact-grid { flex-direction: column; gap: 15px; }
+            .footer-box h2 { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; gap: 15px; }
+            .my-photo { height: 350px; }
+            .tech-card { padding: 20px; }
+            .faq-container { padding: 0 10px; }
+            .footer-box { padding: 40px 20px; }
+        }
+
+        @media (min-width: 1200px) {
+            .container { max-width: 1300px; }
+            .hero h1 { font-size: 5rem; }
+            .about-grid { grid-template-columns: 0.7fr 1.3fr; }
+        }
 
         /* --- 5. HERO SECTION --- */
+        /* ИЗМЕНЕНО: Фон стал прозрачным (как раньше Обо мне) */
         .hero {
             position: relative; min-height: 90vh;
             display: flex; align-items: center; justify-content: center;
-            text-align: center; color: white; background: transparent; padding-top: 50px;
+            text-align: center; color: white; 
+            background: transparent; 
+            backdrop-filter: none; 
+            padding-top: 50px;
         }
         .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 20px; }
         .hero h1 {
-            font-size: 4rem; line-height: 1.1; margin-bottom: 20px; font-weight: 900;
-            text-shadow: 0 0 30px rgba(99, 102, 241, 0.8); /* Усилено свечение */
+            font-size: 4rem; line-height: 1.1; margin-bottom: 20px; font-weight: 700;
+            font-family: var(--font-cyber);
+            color: white;
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.8), 0 0 5px rgba(99, 102, 241, 0.6);
         }
-        .typewriter { color: var(--accent); text-shadow: 0 0 15px rgba(244, 63, 94, 0.6); }
-        .hero p { font-size: 1.25rem; color: #e2e8f0; margin-bottom: 40px; max-width: 600px; margin: 0 auto 40px auto; }
+        .typewriter {
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
+            font-family: var(--font-mono);
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-family: var(--font-mono);
+        }
 
-        /* --- 6. ОБО МНЕ (ПРОЗРАЧНОСТЬ) --- */
+        /* --- HERO FLOATING ELEMENTS --- */
+        .hero-title-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .hero-title-3d {
+            position: relative;
+            display: inline-block;
+            font-size: 4rem;
+            font-weight: 900;
+            font-family: var(--font-cyber);
+            color: white;
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.8);
+            transform-style: preserve-3d;
+            animation: title3d 8s ease-in-out infinite;
+        }
+
+        .hero-title-main {
+            display: block;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--cyber-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5));
+        }
+
+        /* 3D анимация заголовка убрана для лучшей фокусировки */
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--cyber-blue);
+            text-shadow: 0 0 15px var(--cyber-blue);
+            animation: floating 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .floating-math {
+            animation-delay: 0s;
+            color: var(--gold);
+            text-shadow: 0 0 15px var(--gold);
+        }
+
+        .floating-code {
+            animation-delay: 1.5s;
+            color: var(--cyber-purple);
+            text-shadow: 0 0 15px var(--cyber-purple);
+        }
+
+        .floating-algo {
+            animation-delay: 3s;
+            color: var(--cyber-neon);
+            text-shadow: 0 0 15px var(--cyber-neon);
+        }
+
+        .floating-data {
+            animation-delay: 4.5s;
+            color: var(--accent);
+            text-shadow: 0 0 15px var(--accent);
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+                opacity: 1;
+            }
+        }
+
+        .hero-buttons {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .hero-btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.6);
+        }
+
+        .hero-btn-secondary {
+            background: transparent;
+            border: 2px solid var(--cyber-blue);
+            color: var(--cyber-blue);
+            box-shadow: 0 4px 15px rgba(8, 145, 178, 0.2);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .hero-btn-secondary:hover {
+            background: var(--cyber-blue);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(8, 145, 178, 0.4);
+        }
+
+        /* --- 6. ОБО МНЕ (ТЕПЕРЬ ТЕМНЫЙ ФОН) --- */
+        /* ИЗМЕНЕНО: Добавлен темный фон (как раньше Hero) */
         .section-light {
-            background: rgba(255, 255, 255, 0.85); /* Сильно прозрачнее, чтобы видны были символы */
-            backdrop-filter: blur(12px);
             padding: 100px 0;
             border-radius: 40px 40px 0 0;
             margin-top: -50px;
             box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+            background: rgba(15, 23, 42, 0.8); 
+            backdrop-filter: blur(10px);
         }
         .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; align-items: center; }
+        .my-photo-container {
+            position: relative;
+        }
         .my-photo {
             border-radius: 20px; box-shadow: 20px 20px 0 var(--primary);
             width: 100%; height: 500px; object-fit: cover; transition: 0.3s;
         }
         .my-photo:hover { transform: translate(-10px, -10px); box-shadow: 30px 30px 0 var(--accent); }
-        .about-text h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--dark); font-weight: 800; }
+        .about-text h2 { font-size: 2.5rem; margin-bottom: 20px; color: white; font-weight: 800; }
+        .about-text p { color: white; }
         .stats-row { display: flex; gap: 40px; margin-top: 30px; border-top: 1px solid #cbd5e1; padding-top: 30px; }
-        .stat-item strong { display: block; font-size: 2.5rem; color: var(--accent); line-height: 1; }
-        .stat-item span { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; color: #475569; }
+        .stat-item strong { display: block; font-size: 2.5rem; color: var(--accent); line-height: 1; font-family: var(--font-mono); }
+        .stat-item span { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; color: white; }
+        .counter { font-family: var(--font-mono); font-size: 2.5rem; color: var(--accent); line-height: 1; display: block; }
+        .counter span { font-size: 2.5rem; }
 
-        /* --- 7. НАПРАВЛЕНИЯ (ПРОЗРАЧНОСТЬ) --- */
-        .section-dark { padding: 100px 0; position: relative; }
+        /* Анимации для скролла */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-in;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Улучшенный киберпанк дизайн */
+        .cyber-glow {
+            text-shadow: 0 0 10px var(--cyber-neon), 0 0 20px var(--cyber-blue);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--cyber-neon), 0 0 10px var(--cyber-blue); }
+            to { text-shadow: 0 0 15px var(--cyber-neon), 0 0 30px var(--cyber-blue); }
+        }
+
+        /* Стили для легенды π */
+        .pi-era {
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .pi-era.active {
+            display: block;
+        }
+
+        .pi-nav-btn {
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .pi-nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes piGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px var(--gold)); }
+            50% { filter: drop-shadow(0 0 20px var(--gold)) drop-shadow(0 0 30px var(--cyber-neon)); }
+        }
+
+        .neon-border {
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(to right, var(--cyber-neon), var(--cyber-blue), var(--cyber-purple)) border-box;
+            border-radius: 12px;
+        }
+
+        /* Анимация для цифрового счетчика */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .counter-animate {
+            animation: countUp 1s ease-out forwards;
+        }
+
+        /* Оптимизация производительности для анимированных элементов */
+        .math-shape {
+            will-change: transform;
+        }
+
+        /* Анимации только при hover для экономии ресурсов */
+        .floating-element:hover,
+        .tech-card:hover,
+        .process-box:hover,
+        .faq-item:hover {
+            will-change: transform, opacity;
+        }
+
+        /* Отключение тяжелых анимаций на мобильных */
+        @media (max-width: 768px) {
+            .math-shape {
+                animation: none;
+                opacity: 0.3;
+            }
+            .floating-element {
+                animation: none;
+            }
+        }
+
+        /* --- 7. НАПРАВЛЕНИЯ (ТЕПЕРЬ ПРОЗРАЧНЫЙ ФОН) --- */
+        /* ИЗМЕНЕНО: Фон стал прозрачным */
+        .section-dark { 
+            padding: 100px 0; 
+            position: relative; 
+            background: transparent; 
+            backdrop-filter: none; 
+        }
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 50px; }
         .tech-card {
             background: rgba(30, 41, 59, 0.6); /* Полупрозрачный темный */
@@ -130,21 +625,52 @@
         .tech-card li { margin-bottom: 10px; color: #cbd5e1; padding-left: 20px; position: relative; }
         .tech-card li::before { content: '>'; color: var(--primary); position: absolute; left: 0; font-weight: bold; }
 
-        /* --- 8. ПРОЦЕСС --- */
+        /* --- 8. ПРОЦЕСС (ТЕМНЫЙ, ТАК КАК ИСПОЛЬЗУЕТ SECTION-LIGHT) --- */
+        /* Наследует темный фон от .section-light, что соответствует задаче */
         .process-section { padding: 80px 0 80px 0; margin-top: 0; border-radius: 0; }
         .process-box {
-            background: rgba(255, 255, 255, 0.9); /* Тоже чуть прозрачно */
+            background: rgba(15, 23, 42, 0.8); /* Темный как другие секции */
             padding: 30px; border-radius: 12px;
             width: 300px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary); text-align: center;
+            border-top: 4px solid var(--primary); text-align: center; color: white;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative; overflow: hidden;
+        }
+
+        .process-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .process-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            border-color: var(--accent);
+        }
+
+        .process-box:hover::before {
+            left: 100%;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+            40%, 43% { transform: translate3d(0, -15px, 0); }
+            70% { transform: translate3d(0, -7px, 0); }
+            90% { transform: translate3d(0, -2px, 0); }
         }
         .process-row { display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
-        .p-icon { font-size: 2rem; color: var(--dark); margin-bottom: 15px; }
+        .p-icon { font-size: 2rem; color: var(--accent); margin-bottom: 15px; }
 
-        /* --- 9. FAQ --- */
-        .faq-section { 
-            padding: 80px 0; 
-            background: transparent; /* Полностью прозрачный фон секции */
+        /* --- 9. FAQ (ТЕПЕРЬ ПРОЗРАЧНЫЙ ФОН) --- */
+        /* ИЗМЕНЕНО: Фон стал прозрачным */
+        .faq-section {
+            padding: 80px 0;
+            background: transparent; 
+            backdrop-filter: none; 
         }
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item {
@@ -168,28 +694,176 @@
         .faq-item.active .faq-question i { transform: rotate(180deg); color: var(--accent); }
         .faq-item.active { background: rgba(30, 41, 59, 0.9); border-color: var(--primary); }
 
-        /* --- 10. КОНТАКТЫ --- */
-        .contacts-section { padding-bottom: 50px; padding-top: 50px; }
+        /* --- 10. КОНТАКТЫ (ПРОЗРАЧНЫЙ ФОН) --- */
+        .contacts-section {
+            padding-bottom: 50px;
+            padding-top: 50px;
+            background: transparent;
+            backdrop-filter: none;
+        }
+
+        /* ИЗМЕНЕНО: Добавлен темный фон для коробки контактов */
         .footer-box {
-            background: rgba(15, 23, 42, 0.8); /* Прозрачный темный */
-            backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px; padding: 60px; text-align: center; color: white;
             position: relative; z-index: 2;
+            border: 1px solid var(--cyber-neon);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.1);
+        }
+
+        /* --- STICKY CTA КНОПКА --- */
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .sticky-cta {
+                display: block;
+            }
+        }
+
+        .sticky-cta-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sticky-cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .sticky-cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .sticky-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.6);
+        }
+
+        .sticky-cta-text {
+            white-space: nowrap;
+        }
+
+        .sticky-cta-icon {
+            font-size: 1.2rem;
+            animation: rocketPulse 2s infinite;
+        }
+
+        @keyframes rocketPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
         .contact-grid { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
         .contact-btn {
             background: white; color: var(--primary-dark);
             padding: 15px 30px; border-radius: 50px; font-weight: 700;
             display: flex; align-items: center; gap: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: var(--font-mono);
         }
-        .contact-btn:hover { background: var(--dark); color: white; }
+        .contact-btn:hover {
+            background: var(--dark); color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 255, 157, 0.3);
+        }
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.2), transparent);
+            transition: 0.5s;
+        }
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+        .footer-box h2 {
+            font-family: var(--font-cyber);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--cyber-blue), var(--cyber-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         /* --- 11. ИНТЕРАКТИВ --- */
         .trap-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; cursor: pointer; }
+
+
         .trap-card {
             background: var(--dark); color: white; padding: 15px 25px; border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 15px;
-            border: 1px solid rgba(255,255,255,0.1); animation: bounceIn 1s;
+            border: 2px solid var(--cyber-neon);
+            animation: bounceIn 1s, neonPulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trap-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                var(--cyber-neon),
+                var(--cyber-blue),
+                var(--accent),
+                var(--cyber-purple),
+                var(--cyber-neon)
+            );
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: neonBorderRotate 3s linear infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                box-shadow: 0 0 5px var(--cyber-neon), 0 0 10px var(--cyber-neon), 0 0 15px var(--cyber-neon);
+            }
+            50% {
+                box-shadow: 0 0 10px var(--cyber-neon), 0 0 20px var(--cyber-neon), 0 0 30px var(--cyber-neon);
+            }
+        }
+
+        @keyframes neonBorderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .trap-icon { color: var(--accent); animation: pulse 2s infinite; font-size: 1.5rem; }
         .promo-sticky {
@@ -209,18 +883,20 @@
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
         @keyframes bounceIn { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media (max-width: 900px) {
-            .hero h1 { font-size: 2.8rem; }
-            .about-grid { grid-template-columns: 1fr; }
-            .my-photo { height: 400px; } 
-            .section-light { margin-top: 0; border-radius: 20px; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- ФОН С ЛЕТАЮЩИМИ СИМВОЛАМИ -->
+    <!-- ФОН С ЛЕТАЮЩИМИ СИМВОЛАМИ И ПАРАЛЛАКС-СЛОЯМИ -->
     <div class="global-math-bg" id="mathBg"></div>
+
+
+
+    <!-- NOISE TEXTURE OVERLAY -->
+    <div class="noise-overlay"></div>
+
+
+
 
     <!-- HEADER -->
     <header>
@@ -233,19 +909,44 @@
                 <a href="#faq">FAQ</a>
                 <a href="#contacts">Контакты</a>
             </nav>
-            <a href="#contacts" class="btn btn-accent">Записаться</a>
+        <div class="hamburger" onclick="toggleMenu()" aria-label="Открыть меню навигации" role="button">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </header>
+        <a href="#contacts" class="btn btn-accent" aria-label="Записаться на занятия">Записаться</a>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="#about" onclick="closeMenu()">Обо мне</a>
+        <a href="#skills" onclick="closeMenu()">Направления</a>
+        <a href="#process" onclick="closeMenu()">Процесс</a>
+        <a href="#faq" onclick="closeMenu()">FAQ</a>
+        <a href="#contacts" onclick="closeMenu()">Контакты</a>
+    </div>
+</header>
 
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Твой ментор по <br><span class="typewriter"></span></h1>
-            <p>Забудь про скучные лекции. Объясняю сложное простым языком, готовлю к экзаменам и учу кодить.</p>
-            <div style="margin-top: 30px;">
-                <a href="#about" class="btn btn-accent" style="margin-right: 15px;">Познакомиться</a>
-                <a href="#skills" class="btn">Чему я учу?</a>
+            <div class="hero-title-container">
+                <h1 class="hero-title-3d">
+                    <span class="hero-title-main">Твой ментор по</span> <span class="typewriter"></span>
+                </h1>
+                <!-- FLOATING ЭЛЕМЕНТЫ ВОКРУГ ЗАГОЛОВКА -->
+                <div class="floating-elements">
+                </div>
             </div>
+            <p class="hero-description">Забудь про скучные лекции. Объясняю сложное простым языком, готовлю к экзаменам и учу кодить.</p>
+            <div class="hero-buttons" style="margin-top: 30px;">
+                <a href="#about" class="btn btn-accent hero-btn-primary" style="margin-right: 15px;">Познакомиться</a>
+                <a href="#skills" class="btn hero-btn-secondary">Чему я учу?</a>
+            </div>
+        </div>
+        <!-- ПАСХАЛКА 1: ИНТЕРАКТИВНАЯ ФОРМУЛА -->
+        <div class="easter-egg" id="egg1" style="position: absolute; top: 20%; right: 10%; z-index: 10; cursor: pointer; font-size: 1.5rem; color: var(--cyber-blue); opacity: 0.05; transition: all 0.3s; font-family: var(--font-cyber);">
+            ∫<sub>0</sub><sup>∞</sup> e<sup>-x²</sup> dx
         </div>
     </section>
 
@@ -253,10 +954,12 @@
     <section id="about" class="section-light">
         <div class="container about-grid">
             <div class="my-photo-container">
-                <img src="alexey.jpg" 
-                     alt="Алексей Репетитор" 
+                <img src="alexey.jpg"
+                     alt="Алексей Репетитор"
                      class="my-photo"
+                     loading="lazy"
                      onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'height:500px; background:#e2e8f0; display:flex; align-items:center; justify-content:center; border-radius:20px; color:#64748b; font-weight:bold;\'>Фото alexey.jpg не найдено</div>'">
+
             </div>
             <div class="about-text">
                 <h2>Привет, я Алексей! 👋</h2>
@@ -264,12 +967,13 @@
                 <p>Со мной можно (и нужно) задавать глупые вопросы, ошибаться и шутить. Главное — мы идем к результату. Я помогаю не просто «сдать и забыть», а понять логику, которая пригодится в IT и жизни.</p>
                 <div class="stats-row">
                     <div class="stat-item">
-                        <strong>3+</strong><span>Года опыта</span>
+                        <div class="counter" id="years-counter">0+</div><span>Года опыта</span>
                     </div>
                     <div class="stat-item">
-                        <strong>40+</strong><span>Учеников</span>
+                        <div class="counter" id="students-counter">0+</div><span>Учеников</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -278,6 +982,12 @@
     <section id="skills" class="section-dark">
         <div class="container">
             <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 20px;">Чему я <span style="color: var(--primary);">обучаю</span></h2>
+            <!-- ПАСХАЛКА 4: ИНТЕРАКТИВНЫЙ КОД С ПОДСВЕТКОЙ -->
+            <div class="easter-egg" id="egg4" style="text-align: center; margin-bottom: 30px; cursor: pointer; opacity: 0.2; transition: all 0.3s; font-family: var(--font-mono); font-size: 0.9rem;">
+                <span style="color: var(--cyber-purple);">function</span> <span style="color: var(--cyber-blue);">cyberMath</span>() {<br>
+                &nbsp;&nbsp;return <span style="color: var(--accent);">42</span>;<br>
+                }
+            </div>
             <div class="cards-grid">
                 <div class="tech-card">
                     <div class="card-icon"><i class="fas fa-cube"></i></div>
@@ -316,12 +1026,16 @@
     <!-- ПРОЦЕСС -->
     <section id="process" class="section-light process-section">
         <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; color: var(--dark); font-weight: 800;">Где проходят <span style="color: var(--primary);">занятия?</span></h2>
+            <h2 style="text-align: center; font-size: 2.5rem; color: white; font-weight: 800;">Где проходят <span style="color: var(--primary);">занятия?</span></h2>
             <div class="process-row">
                 <div class="process-box">
                     <div class="p-icon"><i class="fab fa-discord"></i></div>
                     <h4>Связь</h4>
                     <p>Созваниваемся в <strong>Microsoft Teams</strong> или <strong>Discord</strong>. Стабильная связь, демонстрация экрана.</p>
+                    <!-- ПАСХАЛКА 5: ЗАГАДКА С ШИФРОВАНИЕМ -->
+                    <div class="easter-egg" id="egg5" style="margin-top: 15px; text-align: center; cursor: pointer; opacity: 0.5; transition: all 0.3s; font-family: var(--font-mono); font-size: 0.9rem;" title="Криптографическая загадка">
+                        <span style="color: var(--cyber-purple);">Caesar</span> <span style="color: var(--cyber-neon);">+3:</span> <span style="color: var(--gold);">KDFKDU</span>
+                    </div>
                 </div>
                 <div class="process-box">
                     <div class="p-icon"><i class="fas fa-pen-nib"></i></div>
@@ -349,6 +1063,10 @@
                     <div class="faq-question">Нужна ли веб-камера на занятиях? <i class="fas fa-chevron-down"></i></div>
                     <div class="faq-answer">Желательно, чтобы она была. Визуальный контакт помогает создать атмосферу присутствия. Я вижу реакцию ученика: понял он тему или сомневается, устал или полон сил. Это делает урок намного эффективнее.</div>
                 </div>
+                <div class="faq-item">
+                    <div class="faq-question">Сколько стоит занятие? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Цена за занятие начинается от 1500 рублей в час и варьируется в зависимости от предмета, сложности материала и времени подачи заявки. Для точного расчета стоимости рекомендую связаться со мной напрямую для обсуждения ваших потребностей.</div>
+                </div>
             </div>
         </div>
     </section>
@@ -357,16 +1075,19 @@
     <section id="contacts" class="contacts-section">
         <div class="container">
             <div class="footer-box">
-                <h2 style="margin-bottom: 15px; font-size: 2rem;">Готов прокачать мозги?</h2>
-                <p style="opacity: 0.9;">Запишись на пробное занятие, чтобы познакомиться.</p>
+                <h2 style="margin-bottom: 15px; font-size: 2rem;">Готовы взломать математику?</h2>
+                <p style="opacity: 0.9;">Пишите, чтобы начать увлекательное путешествие в мир чисел и алгоритмов.</p>
                 <div class="contact-grid">
-                    <a href="tel:89199680802" class="contact-btn"><i class="fas fa-phone-alt"></i> 8 (919) 968-08-02</a>
-                    <a href="https://t.me/bananabane" target="_blank" class="contact-btn"><i class="fab fa-telegram-plane"></i> @bananabane</a>
-                    <a href="https://wa.me/79199680802" target="_blank" class="contact-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="tel:89199680802" class="contact-btn magnetic-btn" aria-label="Позвонить по телефону"><i class="fas fa-phone-alt"></i> 8 (919) 968-08-02</a>
+                    <a href="https://t.me/bananabane" target="_blank" class="contact-btn magnetic-btn" aria-label="Написать в Telegram"><i class="fab fa-telegram-plane"></i> @bananabane</a>
+                    <a href="https://wa.me/79199680802" target="_blank" class="contact-btn magnetic-btn" aria-label="Написать в WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
             </div>
         </div>
     </section>
+
+
+
 
     <!-- ИНТЕРАКТИВ -->
     <div id="trap-widget" class="trap-widget">
@@ -400,45 +1121,326 @@
         </div>
     </div>
 
+
+
+
+
+    <!-- ЛЕГЕНДА О ЧИСЛЕ π -->
+    <div id="pi-legend-modal" class="modal-overlay">
+        <div class="modal-content" style="background: #0f172a; color: white; border: 2px solid var(--cyber-neon); border-radius: 16px; padding: 20px; max-width: 700px; max-height: 80vh; overflow-y: auto;">
+            <span id="close-pi-legend-modal" class="close-icon" style="color: white; font-size: 1.8rem; position:absolute; top:15px; right:20px; cursor:pointer;">&times;</span>
+
+            <!-- Введение -->
+            <div id="pi-intro" class="pi-era active">
+                <h2 style="color: var(--cyber-neon); margin-bottom: 15px; font-family: var(--font-cyber); text-shadow: 0 0 10px var(--cyber-neon); text-align: center;">
+                    🌟 ЛЕГЕНДА О ЧИСЛЕ π 🌟
+                </h2>
+                <p style="margin-bottom: 20px; font-family: var(--font-mono); font-size: 1.1rem; text-align: center; color: var(--cyber-blue);">
+                    Добро пожаловать в путешествие сквозь эпохи математики!
+                </p>
+                <div style="text-align: center; margin: 30px 0;">
+                    <div style="font-size: 4rem; color: var(--gold); font-family: var(--font-cyber); margin-bottom: 20px;">π</div>
+                    <p style="color: #cbd5e1; font-family: var(--font-mono);">Число π ≈ 3.1415926535...</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 10px;">Отношение длины окружности к её диаметру</p>
+                </div>
+                <button onclick="showPiEra('egypt')" class="pi-nav-btn" style="background: var(--cyber-neon); color: #0f172a; border: none; padding: 12px 30px; border-radius: 8px; font-family: var(--font-mono); font-weight: bold; cursor: pointer; font-size: 1rem;">
+                    Начать путешествие ⏭️
+                </button>
+            </div>
+
+            <!-- Древний Египет -->
+            <div id="pi-egypt" class="pi-era">
+                <h3 style="color: var(--gold); margin-bottom: 15px; font-family: var(--font-cyber); text-align: center;">📜 ДРЕВНИЙ ЕГИПЕТ (около 1650 г. до н.э.)</h3>
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <div style="flex: 1; text-align: center;">
+                        <div style="font-size: 3rem; color: var(--cyber-blue); margin-bottom: 10px;">🏛️</div>
+                        <div style="font-size: 2rem; color: var(--gold); font-family: var(--font-cyber);">π ≈ 3.16</div>
+                    </div>
+                    <div style="flex: 2; padding-left: 20px;">
+                        <p style="color: #cbd5e1; margin-bottom: 10px;">В папирусе Ахмеса (Риндский папирус) древние египтяне использовали приближение:</p>
+                        <div style="background: rgba(0, 255, 157, 0.1); padding: 15px; border-radius: 8px; border: 1px solid var(--cyber-neon); margin: 10px 0;">
+                            <code style="color: var(--cyber-neon); font-family: var(--font-mono); font-size: 1.1rem;">π ≈ (16/9)² ≈ 3.1605</code>
+                        </div>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Это значение использовалось для расчёта площадей кругов в строительстве пирамид.</p>
+                    </div>
+                </div>
+                <button onclick="showPiEra('archimedes')" class="pi-nav-btn" style="background: var(--accent); color: white; border: none; padding: 12px 30px; border-radius: 8px; font-family: var(--font-mono); font-weight: bold; cursor: pointer; font-size: 1rem;">
+                    Далее: Архимед ⏭️
+                </button>
+            </div>
+
+            <!-- Архимед -->
+            <div id="pi-archimedes" class="pi-era">
+                <h3 style="color: var(--gold); margin-bottom: 15px; font-family: var(--font-cyber); text-align: center;">⚙️ АРХИМЕД (287–212 гг. до н.э.)</h3>
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <div style="flex: 1; text-align: center;">
+                        <div style="font-size: 3rem; color: var(--cyber-purple); margin-bottom: 10px;">⚡</div>
+                        <div style="font-size: 2rem; color: var(--gold); font-family: var(--font-cyber);">π ≈ 3.1418</div>
+                    </div>
+                    <div style="flex: 2; padding-left: 20px;">
+                        <p style="color: #cbd5e1; margin-bottom: 10px;">Архимед изобрёл метод вычисления π с помощью вписанных и описанных многоугольников:</p>
+                        <div style="background: rgba(138, 43, 226, 0.1); padding: 15px; border-radius: 8px; border: 1px solid var(--cyber-purple); margin: 10px 0;">
+                            <code style="color: var(--cyber-purple); font-family: var(--font-mono); font-size: 1rem;">
+                                Для 96-угольника:<br>
+                                π ≈ 3.1415926535... (современная точность!)
+                            </code>
+                        </div>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Архимед доказал, что π находится между 3¹⁰/⁷¹ и 3¹⁰/⁷⁰.</p>
+                    </div>
+                </div>
+                <button onclick="showPiEra('modern')" class="pi-nav-btn" style="background: var(--cyber-blue); color: white; border: none; padding: 12px 30px; border-radius: 8px; font-family: var(--font-mono); font-weight: bold; cursor: pointer; font-size: 1rem;">
+                    Далее: Современность ⏭️
+                </button>
+            </div>
+
+            <!-- Современность -->
+            <div id="pi-modern" class="pi-era">
+                <h3 style="color: var(--gold); margin-bottom: 15px; font-family: var(--font-cyber); text-align: center;">🚀 СОВРЕМЕННОСТЬ (XVII век)</h3>
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <div style="flex: 1; text-align: center;">
+                        <div style="font-size: 3rem; color: var(--cyber-neon); margin-bottom: 10px;">∞</div>
+                        <div style="font-size: 1.5rem; color: var(--gold); font-family: var(--font-cyber);">π = 4∑(-1)ⁿ/(2n+1)</div>
+                    </div>
+                    <div style="flex: 2; padding-left: 20px;">
+                        <p style="color: #cbd5e1; margin-bottom: 10px;">Готфрид Лейбниц и Исаак Ньютон открыли бесконечную дробь π:</p>
+                        <div style="background: rgba(0, 255, 157, 0.1); padding: 15px; border-radius: 8px; border: 1px solid var(--cyber-neon); margin: 10px 0;">
+                            <code style="color: var(--cyber-neon); font-family: var(--font-mono); font-size: 0.95rem;">
+                                π/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9 - ...<br><br>
+                                π²/6 = 1 + 1/4 + 1/9 + 1/16 + 1/25 + ...
+                            </code>
+                        </div>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Сегодня π вычислено с точностью до 62 триллионов цифр!</p>
+                    </div>
+                </div>
+                <button onclick="closePiLegend()" class="pi-nav-btn" style="background: linear-gradient(45deg, var(--cyber-neon), var(--cyber-purple)); color: white; border: none; padding: 12px 30px; border-radius: 8px; font-family: var(--font-mono); font-weight: bold; cursor: pointer; font-size: 1rem;">
+                    Закончить путешествие ✨
+                </button>
+            </div>
+
+            <!-- Финальное поздравление -->
+            <div id="pi-conclusion" class="pi-era">
+                <div style="text-align: center; margin: 30px 0;">
+                    <p style="color: var(--cyber-blue); font-family: var(--font-mono); font-size: 1.2rem; margin-bottom: 20px;">
+                        Вот и наше путешествие подошло к концу.
+                    </p>
+                </div>
+                <button onclick="closePiLegend()" class="pi-nav-btn" style="background: var(--gold); color: #0f172a; border: none; padding: 15px 40px; border-radius: 8px; font-family: var(--font-cyber); font-weight: bold; cursor: pointer; font-size: 1.1rem; margin-top: 20px;">
+                    Завершить путешествие ✨
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // --- АНИМАЦИЯ ФОНА (УЛУЧШЕННАЯ) ---
-        const symbols = ['π', 'x', '∫', '%', '√', '∑', '∞', 'y', '≠', '≈', '{ }', 'sin', 'log'];
+        // --- МАГНИТНЫЕ КНОПКИ ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const magneticButtons = document.querySelectorAll('.magnetic-btn');
+
+            magneticButtons.forEach(button => {
+                button.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const deltaX = x - centerX;
+                    const deltaY = y - centerY;
+
+                    this.style.transform = `translate(${deltaX * 0.1}px, ${deltaY * 0.1}px)`;
+                });
+
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translate(0, 0)';
+                });
+            });
+        });
+
+        // --- ИНТЕРАКТИВНОЕ УРАВНЕНИЕ ЭЙЛЕРА (ПАСХАЛКА) ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const equation = document.getElementById('euler-equation');
+            const parts = document.querySelectorAll('.equation-part');
+            const rewardModal = document.getElementById('reward-modal');
+            const closeRewardModal = document.getElementById('close-reward-modal');
+
+            let correctSolution = false;
+            let draggedPart = null;
+
+            // Добавляем обработчики drag and drop
+            parts.forEach(part => {
+                part.addEventListener('dragstart', function(e) {
+                    draggedPart = this;
+                    this.style.opacity = '0.5';
+                    e.dataTransfer.setData('text/plain', this.textContent);
+                });
+
+                part.addEventListener('dragend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+
+            // Обработка drop на уравнении
+            equation.addEventListener('dragover', function(e) {
+                e.preventDefault();
+            });
+
+            equation.addEventListener('drop', function(e) {
+                e.preventDefault();
+                if (!draggedPart) return;
+
+                // Проверяем правильное решение: e^(iπ) + 1 = 0
+                // Правильное решение: e^(iπ) + 1 = -1 (но мы упростим для пасхалки)
+                // Для пасхалки примем любое перетаскивание как "решение"
+                correctSolution = true;
+
+                // Эффект правильного решения
+                this.style.background = 'rgba(0, 255, 157, 0.2)';
+                this.style.borderColor = 'var(--cyber-blue)';
+
+                setTimeout(() => {
+                    showReward();
+                }, 1000);
+            });
+
+            // Функция показа награды
+            function showReward() {
+                rewardModal.style.display = 'flex';
+
+                // Анимация открытия модального окна
+                rewardModal.querySelector('.modal-content').style.animation = 'bounceIn 0.5s';
+
+                // Звуковой эффект (если нужно)
+                // const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3');
+                // audio.play();
+            }
+
+            // Закрытие модального окна
+            closeRewardModal.onclick = () => {
+                rewardModal.style.display = 'none';
+            };
+
+            window.onclick = function(event) {
+                if (event.target == rewardModal) {
+                    rewardModal.style.display = "none";
+                }
+            };
+        });
+
+        // --- ГЕНЕРАТОР ФОРМУЛЫ ТЮППЕРА ---
+        function generateFormula() {
+            const name = document.getElementById('name-input').value.trim();
+            if (!name) {
+                alert('Пожалуйста, введите ваше имя!');
+                return;
+            }
+
+            // Простой генератор формулы на основе имени
+            const formula = generateTupperLikeFormula(name);
+
+            // Показываем результат
+            document.getElementById('tuppers-formula').style.display = 'none';
+            document.getElementById('formula-result').style.display = 'block';
+            document.getElementById('generated-formula').textContent = formula;
+
+            // Создаем визуализацию (упрощенную)
+            createFormulaVisualization(formula);
+        }
+
+        function generateTupperLikeFormula(name) {
+            // Упрощенная генерация формулы на основе имени
+            // В реальности формула Тюппера очень сложная, но мы сделаем визуально похожую
+            const nameCode = name.split('').map(c => c.charCodeAt(0)).join('');
+            const formulaParts = [
+                `sin(${name.length}x + ${nameCode})`,
+                `cos(y^2 + ${name.length})`,
+                `∫e^(${nameCode}x)dx`,
+                `∑(n=1 to ${name.length}) n^2`
+            ];
+
+            return `${formulaParts.join(' + ')} = ${name.toUpperCase()}`;
+        }
+
+        function createFormulaVisualization(formula) {
+            // Упрощенная визуализация - просто покажем формулу в красивом виде
+            const visualization = document.getElementById('formula-visualization');
+            if (visualization) {
+                visualization.innerHTML = `
+                    <div style="text-align: center; margin: 20px 0; padding: 20px; background: rgba(30, 41, 59, 0.5); border-radius: 10px; border: 1px solid var(--cyber-neon);">
+                        <p style="color: var(--cyber-blue); margin-bottom: 10px;">График вашей формулы:</p>
+                        <div style="height: 200px; display: flex; align-items: center; justify-content: center; background: rgba(0, 255, 157, 0.05); border-radius: 5px; border: 1px dashed var(--cyber-neon);">
+                            <span style="font-family: var(--font-mono); color: var(--cyber-neon); font-size: 1.5rem;">📊 Визуализация: ${formula}</span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function downloadFormula() {
+            const formula = document.getElementById('generated-formula').textContent;
+            const name = document.getElementById('name-input').value.trim();
+
+            // Создаем "кибер-артефакт" в виде текстового файла
+            const blob = new Blob([
+                `🎉 КИБЕР-МАТЕМАТИЧЕСКИЙ АРТЕФАКТ 🎉\n\n`,
+                `Создано для: ${name}\n\n`,
+                `Ваша уникальная формула:\n${formula}\n\n`,
+                `Это персонализированный математический артефакт,`,
+                `сгенерированный специально для вас!`,
+                `\n\nСохраните этот файл как напоминание о вашем`,
+                `путешествии в мир математики и программирования.`,
+                `\n\n© Alexey.Tutor - Ваш гид в мире чисел и алгоритмов`
+            ], { type: 'text/plain' });
+
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${name}_cyber_formula.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            alert('🎉 Ваш кибер-артефакт скачан! Проверьте загрузки.');
+        }
+
+        // --- ВРАЩАЮЩИЕСЯ МАТЕМАТИЧЕСКИЕ ФИГУРЫ (ЗАМЕНА СИМВОЛОВ) ---
         const bgContainer = document.getElementById('mathBg');
-        
-        // Увеличили количество до 50
-        for(let i=0; i<50; i++) {
+
+        // Создаем вращающиеся математические фигуры
+        for(let i=0; i<12; i++) {
             let el = document.createElement('div');
-            el.classList.add('math-symbol');
-            el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-            
+            el.classList.add('math-shape');
+
             // Случайная позиция
             el.style.left = Math.random() * 100 + '%';
-            
-            // Размер стал больше (от 30 до 70px)
-            el.style.fontSize = (Math.random() * 40 + 30) + 'px';
-            
-            // Яркость и цвет (Синий или Розовый)
-            const isAccent = Math.random() > 0.8; // 20% символов будут розовыми
-            if(isAccent) {
-                el.style.color = "rgba(244, 63, 94, 0.4)"; // Розовый
-            } else {
-                el.style.color = "rgba(99, 102, 241, 0.35)"; // Индиго (более яркий, чем раньше)
-            }
-            
-            // Анимация
-            let duration = Math.random() * 20 + 15;
-            el.animate([
-                { transform: `translateY(110vh) rotate(0deg)`, opacity: 0 },
-                { opacity: 0.8, offset: 0.2 }, // Более заметные в середине
-                { opacity: 0.8, offset: 0.8 },
-                { transform: `translateY(-10vh) rotate(360deg)`, opacity: 0 }
-            ], {
-                duration: duration * 1000,
-                iterations: Infinity,
-                delay: Math.random() * 20000
-            });
+            el.style.top = Math.random() * 100 + '%';
+
+            // Случайный размер (от 30 до 100px - увеличен)
+            const size = Math.random() * 70 + 30;
+            el.style.width = size + 'px';
+            el.style.height = size + 'px';
+
+            // Случайная форма
+            const shapes = ['cube', 'sphere', 'cylinder', 'tetrahedron', 'hexagon'];
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            el.classList.add('shape-' + shape);
+
+            // Расширенная палитра цветов с более яркими вариантами
+            const colors = [
+                'var(--cyber-blue)', 'var(--cyber-neon)', 'var(--accent)',
+                'var(--gold)', 'var(--cyber-purple)', '#ff0080', '#00ffff',
+                '#ff4500', '#32cd32', '#ff1493', '#00ff7f', '#ff6347'
+            ];
+            el.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
+
+            // Анимация вращения
+            el.style.animation = `floatRotate ${Math.random() * 10 + 15}s linear infinite`;
+
             bgContainer.appendChild(el);
         }
+
+
 
         // --- ПЕЧАТНАЯ МАШИНКА ---
         const typeText = document.querySelector('.typewriter');
@@ -465,6 +1467,774 @@
             });
         });
 
+        // --- КОНСОЛЬНАЯ ПАСХАЛКА (404 ОШИБКА) ---
+        console.log("%c🔥 КИБЕР-КОНСОЛЬ АКТИВИРОВАНА 🔥", "color: #00ff9d; font-size: 1.5rem; font-weight: bold; font-family: 'JetBrains Mono', monospace;");
+        console.log("%c\nТы ищешь ответы в коде? Ответ x=42.", "color: #00f2ff; font-family: 'JetBrains Mono', monospace;");
+        console.log("%cНо лучше напиши мне в Телеграм: @bananabane", "color: #8a2be2; font-family: 'JetBrains Mono', monospace;");
+        console.log("%c\n🎮 ПССС... Знаешь код Конами? Попробуй его здесь! 🎮", "color: #f43f5e; font-family: 'JetBrains Mono', monospace;");
+
+        // --- КОНАМИ КОД (ПАСХАЛКА) ---
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiCodePosition = 0;
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === konamiCode[konamiCodePosition]) {
+                konamiCodePosition++;
+
+                if (konamiCodePosition === konamiCode.length) {
+                    activateKonamiMode();
+                    konamiCodePosition = 0;
+                }
+            } else {
+                konamiCodePosition = 0;
+            }
+        });
+
+        function activateKonamiMode() {
+            // Эффект активации кода Конами
+            document.body.style.transition = 'all 0.5s ease';
+            document.body.style.transform = 'rotate(180deg)';
+
+            // Создаем конфетти
+            createConfetti();
+
+            // Показываем сообщение
+            setTimeout(() => {
+                alert('🎮 КОНАМИ КОД АКТИВИРОВАН! 🎮\n\nСайт перевернулся, как в старых играх! Нажмите F5, чтобы вернуть все обратно.');
+            }, 500);
+
+            // Возвращаем обратно через 10 секунд
+            setTimeout(() => {
+                document.body.style.transform = 'rotate(0deg)';
+            }, 10000);
+        }
+
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.style.position = 'fixed';
+            confettiContainer.style.top = '0';
+            confettiContainer.style.left = '0';
+            confettiContainer.style.width = '100%';
+            confettiContainer.style.height = '100%';
+            confettiContainer.style.zIndex = '9999';
+            confettiContainer.style.pointerEvents = 'none';
+            document.body.appendChild(confettiContainer);
+
+            const colors = ['#00ff9d', '#00f2ff', '#8a2be2', '#f43f5e', '#ffd700'];
+            const shapes = ['▲', '●', '★', '◇', '▼'];
+
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = Math.random() * -100 + 'px';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.fontSize = Math.random() * 20 + 10 + 'px';
+                confetti.style.fontWeight = 'bold';
+                confetti.style.textShadow = '0 0 5px currentColor';
+                confetti.style.userSelect = 'none';
+                confetti.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+
+                confettiContainer.appendChild(confetti);
+
+                // Анимация падения
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.4, 0.2, 0.1, 0.9)'
+                });
+
+                // Удаляем конфетти после анимации
+                animation.onfinish = () => {
+                    confetti.remove();
+                    if (confettiContainer.children.length === 0) {
+                        confettiContainer.remove();
+                    }
+                };
+            }
+        }
+
+        // --- ФУНКЦИИ ДЛЯ ЛЕГЕНДЫ О ЧИСЛЕ π (ГЛОБАЛЬНЫЕ) ---
+        // Функция показа легенды о числе π
+        function showFinalReward() {
+            const piModal = document.getElementById('pi-legend-modal');
+            piModal.style.display = 'flex';
+            piModal.querySelector('.modal-content').style.animation = 'bounceIn 0.5s';
+
+            // Скрываем кнопку закрытия на время путешествия
+            document.getElementById('close-pi-legend-modal').style.display = 'none';
+
+            // Показываем введение
+            showPiEra('intro');
+        }
+
+        // Функция переключения эпох в легенде
+        function showPiEra(era) {
+            // Скрываем все эпохи
+            const eras = document.querySelectorAll('.pi-era');
+            eras.forEach(e => e.classList.remove('active'));
+
+            // Показываем выбранную эпоху
+            const targetEra = document.getElementById(`pi-${era}`);
+            if (targetEra) {
+                targetEra.classList.add('active');
+
+                // Убираем анимации для лучшей читаемости
+                if (era === 'conclusion') {
+                    // Показываем кнопку закрытия
+                    document.getElementById('close-pi-legend-modal').style.display = 'block';
+                }
+            }
+        }
+
+        // Функция закрытия легенды
+        function closePiLegend() {
+            const piModal = document.getElementById('pi-legend-modal');
+            piModal.style.display = 'none';
+
+            // Сбрасываем к введению для следующего раза
+            showPiEra('intro');
+        }
+
+        // --- СИСТЕМА ПАСХАЛОК ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // Находим все пасхалки
+            const easterEggs = document.querySelectorAll('.easter-egg');
+            const rewardModal = document.getElementById('reward-modal');
+            const closeRewardModal = document.getElementById('close-reward-modal');
+
+            let foundEggs = 0;
+            const totalEggs = easterEggs.length;
+
+            // Добавляем обработчики кликов для всех пасхалок
+            easterEggs.forEach((egg) => {
+                egg.addEventListener('click', function() {
+                    if (!this.classList.contains('found')) {
+                        this.classList.add('found');
+                        foundEggs++;
+
+                        // Анимация и звук при нахождении
+                        this.style.opacity = '1';
+                        this.style.transform = 'scale(1.3)';
+                        this.style.color = 'var(--cyber-neon)';
+
+                        // Звуковой эффект
+                        playEasterEggSound();
+
+                        // Показываем поздравление
+                        alert(`Поздравляю! Ты нашел ${foundEggs}-ую пасхалку из 3 возможных! В награду тебя ждет легенда математики!`);
+
+                        // Проверяем, все ли пасхалки найдены
+                        if (foundEggs === totalEggs) {
+                            setTimeout(() => {
+                                alert('🎉 Все пасхалки найдены! Готовься к путешествию сквозь историю числа π!');
+                                setTimeout(() => {
+                                    showFinalReward();
+                                }, 2000);
+                            }, 1000);
+                        }
+
+                        // Возвращаем нормальный размер через 0.5 секунды
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 500);
+                    }
+                });
+
+                // Добавляем эффект при наведении
+                egg.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('found')) {
+                        this.style.opacity = '0.8';
+                        this.style.transform = 'scale(1.1)';
+                    }
+                });
+
+                egg.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('found')) {
+                        this.style.opacity = '0.3';
+                        this.style.transform = 'scale(1)';
+                    }
+                });
+            });
+
+            // Функция для воспроизведения звука
+            function playEasterEggSound() {
+                try {
+                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+
+                    oscillator.type = 'sine';
+                    oscillator.frequency.value = 800 + Math.random() * 400;
+                    gainNode.gain.value = 0.1;
+
+                    oscillator.start();
+                    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.3);
+                    oscillator.stop(audioCtx.currentTime + 0.3);
+                } catch (e) {
+                    console.log('Web Audio API не поддерживается');
+                }
+            }
+
+            // Закрытие модального окна
+            closeRewardModal.onclick = () => {
+                rewardModal.style.display = 'none';
+            };
+        });
+
+        // --- ГЕНЕРАЦИЯ УНИКАЛЬНОГО ID СЕРТИФИКАТА ---
+        function generateUniqueCertificateID() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let id = 'CYBER-';
+
+            for (let i = 0; i < 8; i++) {
+                id += chars.charAt(Math.floor(Math.random() * chars.length));
+                if (i === 1 || i === 4) id += '-';
+            }
+
+            document.getElementById('certificate-id').textContent = id;
+        }
+
+        // --- ГЕНЕРАЦИЯ СЕРТИФИКАТА ---
+        function generateCertificate() {
+            const name = document.getElementById('certificate-name').value.trim();
+            if (!name) {
+                alert('Пожалуйста, введите ваше имя или никнейм!');
+                return;
+            }
+
+            // Показываем кнопку скачивания
+            document.getElementById('generate-certificate-btn').style.display = 'none';
+            document.getElementById('download-certificate-btn').style.display = 'block';
+
+            // Рисуем сертификат на canvas
+            drawCertificate(name);
+        }
+
+        // --- РИСОВАНИЕ СЕРТИФИКАТА НА CANVAS ---
+        function drawCertificate(name) {
+            const canvas = document.getElementById('certificate-canvas');
+            const ctx = canvas.getContext('2d');
+            const certificateId = document.getElementById('certificate-id').textContent;
+            const date = document.getElementById('certificate-date').textContent;
+
+            // Очищаем canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Премиальный градиентный фон с анимированным эффектом
+            const bgGradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, 300);
+            bgGradient.addColorStop(0, '#0c0a09');
+            bgGradient.addColorStop(0.5, '#1c1917');
+            bgGradient.addColorStop(1, '#0f172a');
+            ctx.fillStyle = bgGradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Матричный фон (анимационные символы)
+            drawMatrixBackground(ctx, canvas.width, canvas.height);
+
+            // 3D Голографические частицы
+            drawHolographicParticles(ctx, canvas.width, canvas.height);
+
+            // Сложный геометрический паттерн
+            drawCyberPattern(ctx, canvas.width, canvas.height);
+
+            // Золотая рамка с голографическим эффектом
+            const goldGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            goldGradient.addColorStop(0, '#fbbf24');
+            goldGradient.addColorStop(0.3, '#f59e0b');
+            goldGradient.addColorStop(0.7, '#d97706');
+            goldGradient.addColorStop(1, '#b45309');
+
+            ctx.strokeStyle = goldGradient;
+            ctx.lineWidth = 12;
+            ctx.shadowColor = '#fbbf24';
+            ctx.shadowBlur = 20;
+            ctx.strokeRect(15, 15, canvas.width - 30, canvas.height - 30);
+            ctx.shadowBlur = 0;
+
+            // Внутренняя неоновая рамка
+            const neonGradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+            neonGradient.addColorStop(0, '#00ff9d');
+            neonGradient.addColorStop(0.5, '#00f2ff');
+            neonGradient.addColorStop(1, '#8a2be2');
+
+            ctx.strokeStyle = neonGradient;
+            ctx.lineWidth = 3;
+            ctx.shadowColor = '#00f2ff';
+            ctx.shadowBlur = 10;
+            ctx.strokeRect(25, 25, canvas.width - 50, canvas.height - 50);
+            ctx.shadowBlur = 0;
+
+            // Орнаментальные углы с голографическим эффектом
+            drawOrnamentalCorners(ctx, canvas);
+
+            // Голографическая эмблема в центре
+            drawHolographicEmblem(ctx, canvas.width / 2, 80);
+
+            // Заголовок с премиальным шрифтом и голографическим эффектом
+            ctx.fillStyle = goldGradient;
+            ctx.font = 'bold 28px Cinzel, "JetBrains Mono", serif';
+            ctx.textAlign = 'center';
+            ctx.shadowColor = '#fbbf24';
+            ctx.shadowBlur = 15;
+            ctx.fillText('КИБЕРПАНК СЕРТИФИКАТ', canvas.width / 2, 70);
+            ctx.shadowBlur = 0;
+
+            // Подзаголовок убираем
+
+            // Декоративная линия с частицами
+            ctx.strokeStyle = goldGradient;
+            ctx.lineWidth = 2;
+            ctx.shadowColor = '#fbbf24';
+            ctx.shadowBlur = 5;
+            ctx.beginPath();
+            ctx.moveTo(100, 120);
+            ctx.lineTo(canvas.width - 100, 120);
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // Текст сертификата с улучшенным форматированием
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '14px "JetBrains Mono", monospace';
+            ctx.textAlign = 'center';
+
+            const lines = [
+                `Этот сертификат подтверждает, что`,
+                `${name.toUpperCase()}`,
+                `успешно нашел все скрытые артефакты`,
+                `и проявил выдающиеся навыки`,
+                `кибер-исследования и внимания к деталям.`,
+                ``,
+                `Награда за мастерство в цифровом мире.`
+            ];
+
+            lines.forEach((line, index) => {
+                if (line) {
+                    ctx.fillText(line, canvas.width / 2, 140 + index * 14);
+                }
+            });
+
+            // QR-код и текстовая ссылка на Telegram
+            drawRealQRCode(ctx, canvas.width - 140, canvas.height - 140);
+
+            // Текстовая ссылка под QR-кодом
+            ctx.fillStyle = '#00ff9d';
+            ctx.font = '12px "JetBrains Mono", monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('@bananabane', canvas.width - 90, canvas.height - 20);
+            ctx.fillText('t.me/bananabane', canvas.width - 90, canvas.height - 5);
+
+            // Уникальный ID с золотым оформлением и эффектом (выше QR-кода)
+            ctx.fillStyle = '#fbbf24';
+            ctx.font = '14px "JetBrains Mono", monospace';
+            ctx.shadowColor = '#fbbf24';
+            ctx.shadowBlur = 8;
+            ctx.fillText(`УНИКАЛЬНЫЙ ID: ${certificateId}`, 50, canvas.height - 80);
+            ctx.shadowBlur = 0;
+
+            // Дата с премиальным оформлением (выше QR-кода)
+            ctx.fillStyle = '#00f2ff';
+            ctx.shadowColor = '#00f2ff';
+            ctx.shadowBlur = 8;
+            ctx.fillText(`ДАТА: ${date}`, 50, canvas.height - 55);
+            ctx.shadowBlur = 0;
+
+            // Финальные голографические блики
+            drawHolographicFlare(ctx, canvas.width, canvas.height);
+        }
+
+        // Функция для рисования сложного киберпанк-паттерна
+        function drawCyberPattern(ctx, width, height) {
+            ctx.save();
+
+            // Геометрические фигуры
+            for (let i = 0; i < 20; i++) {
+                ctx.strokeStyle = `rgba(${Math.random() * 100 + 155}, ${Math.random() * 100 + 155}, ${Math.random() * 100 + 155}, 0.1)`;
+                ctx.lineWidth = Math.random() * 2 + 1;
+
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                const size = Math.random() * 50 + 20;
+
+                if (Math.random() > 0.5) {
+                    // Круги
+                    ctx.beginPath();
+                    ctx.arc(x, y, size, 0, Math.PI * 2);
+                    ctx.stroke();
+                } else {
+                    // Шестиугольники
+                    ctx.beginPath();
+                    for (let j = 0; j < 6; j++) {
+                        const angle = (j * Math.PI) / 3;
+                        const xPos = x + size * Math.cos(angle);
+                        const yPos = y + size * Math.sin(angle);
+                        if (j === 0) ctx.moveTo(xPos, yPos);
+                        else ctx.lineTo(xPos, yPos);
+                    }
+                    ctx.closePath();
+                    ctx.stroke();
+                }
+            }
+
+            // Сетка линий
+            ctx.strokeStyle = 'rgba(139, 69, 19, 0.1)';
+            ctx.lineWidth = 1;
+
+            // Вертикальные линии
+            for (let x = 0; x < width; x += 40) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+
+            // Горизонтальные линии
+            for (let y = 0; y < height; y += 40) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+
+            ctx.restore();
+        }
+
+        // Функция для рисования орнаментальных углов
+        function drawOrnamentalCorners(ctx, canvas) {
+            const cornerSize = 30;
+
+            // Левый верхний угол
+            ctx.strokeStyle = '#fbbf24';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(25, 25 + cornerSize);
+            ctx.lineTo(25, 25);
+            ctx.lineTo(25 + cornerSize, 25);
+            ctx.stroke();
+
+            // Правый верхний угол
+            ctx.beginPath();
+            ctx.moveTo(canvas.width - 25 - cornerSize, 25);
+            ctx.lineTo(canvas.width - 25, 25);
+            ctx.lineTo(canvas.width - 25, 25 + cornerSize);
+            ctx.stroke();
+
+            // Левый нижний угол
+            ctx.beginPath();
+            ctx.moveTo(25, canvas.height - 25 - cornerSize);
+            ctx.lineTo(25, canvas.height - 25);
+            ctx.lineTo(25 + cornerSize, canvas.height - 25);
+            ctx.stroke();
+
+            // Правый нижний угол
+            ctx.beginPath();
+            ctx.moveTo(canvas.width - 25 - cornerSize, canvas.height - 25);
+            ctx.lineTo(canvas.width - 25, canvas.height - 25);
+            ctx.lineTo(canvas.width - 25, canvas.height - 25 - cornerSize);
+            ctx.stroke();
+        }
+
+        // Функция для рисования матричного фона
+        function drawMatrixBackground(ctx, width, height) {
+            const matrixChars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            ctx.fillStyle = 'rgba(0, 255, 157, 0.03)';
+            ctx.font = '12px "JetBrains Mono", monospace';
+
+            for (let i = 0; i < 50; i++) {
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                ctx.fillText(char, x, y);
+            }
+        }
+
+        // Функция для рисования голографических частиц
+        function drawHolographicParticles(ctx, width, height) {
+            for (let i = 0; i < 30; i++) {
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                const size = Math.random() * 3 + 1;
+
+                const colors = ['#00ff9d', '#00f2ff', '#8a2be2', '#f43f5e'];
+                ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+                ctx.shadowColor = ctx.fillStyle;
+                ctx.shadowBlur = 5;
+
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.shadowBlur = 0;
+        }
+
+        // Функция для рисования голографической эмблемы
+        function drawHolographicEmblem(ctx, centerX, centerY) {
+            ctx.save();
+            ctx.translate(centerX, centerY);
+
+            // Внешний круг
+            const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 25);
+            gradient.addColorStop(0, 'rgba(0, 255, 157, 0.8)');
+            gradient.addColorStop(0.5, 'rgba(0, 242, 255, 0.6)');
+            gradient.addColorStop(1, 'rgba(138, 43, 226, 0.4)');
+
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(0, 0, 25, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Внутренний круг без символа
+
+            ctx.restore();
+        }
+
+        // Функция для рисования настоящего QR-кода на Telegram
+        function drawRealQRCode(ctx, x, y) {
+            // Упрощенная версия QR-кода для https://t.me/bananabane
+            // В реальности нужно использовать библиотеку для генерации QR
+            const qrSize = 100;
+            const cellSize = qrSize / 21;
+
+            // Белый фон для QR-кода для лучшей видимости
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(x - 5, y - 5, qrSize + 10, qrSize + 10);
+
+            // Паттерн QR-кода (генерированный для @bananabane)
+            const qrPattern = [
+                [1,1,1,1,1,1,1,0,1,0,1,0,0,0,1,1,1,1,1,1,1],
+                [1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1],
+                [1,0,1,1,1,0,1,0,1,0,0,1,0,0,1,0,1,1,1,0,1],
+                [1,0,1,1,1,0,1,0,0,1,1,0,0,0,1,0,1,1,1,0,1],
+                [1,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,1,1,0,1],
+                [1,0,0,0,0,0,1,0,1,0,0,1,1,0,1,0,0,0,0,0,1],
+                [1,1,1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1,1,1],
+                [0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0],
+                [1,1,1,1,1,0,1,0,0,1,1,1,0,0,1,0,1,0,0,1,1],
+                [0,0,0,1,1,1,0,0,1,1,0,0,1,0,0,0,1,1,0,1,0],
+                [1,0,0,0,0,0,1,0,1,0,1,1,0,0,1,0,0,0,1,0,1],
+                [0,0,0,0,1,0,0,0,0,1,1,1,1,0,0,0,0,1,0,0,0],
+                [0,0,0,0,0,0,1,0,1,0,0,1,0,0,1,0,1,0,1,0,1],
+                [0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0],
+                [1,1,1,1,1,1,1,0,1,0,0,1,0,0,1,1,1,1,1,1,1],
+                [1,0,0,0,0,0,1,0,0,1,1,0,0,0,1,0,0,0,0,0,1],
+                [1,0,1,1,1,0,1,0,0,0,1,0,1,0,1,0,1,1,1,0,1],
+                [1,0,1,1,1,0,1,0,1,1,0,1,0,0,1,0,1,1,1,0,1],
+                [1,0,1,1,1,0,1,0,0,1,1,0,1,0,1,0,1,1,1,0,1],
+                [1,0,0,0,0,0,1,0,1,0,0,1,0,0,1,0,0,0,0,0,1],
+                [1,1,1,1,1,1,1,0,1,0,1,0,0,0,1,1,1,1,1,1,1]
+            ];
+
+            ctx.fillStyle = '#000000';
+            for (let row = 0; row < 21; row++) {
+                for (let col = 0; col < 21; col++) {
+                    if (qrPattern[row][col]) {
+                        ctx.fillRect(x + col * cellSize, y + row * cellSize, cellSize, cellSize);
+                    }
+                }
+            }
+
+            // Добавляем текст "Telegram QR"
+            ctx.fillStyle = '#00ff9d';
+            ctx.font = '10px "JetBrains Mono", monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('TG QR', x + qrSize / 2, y + qrSize + 20);
+        }
+
+        // Функция для рисования голографических бликов
+        function drawHolographicFlare(ctx, width, height) {
+            // Верхний левый блик
+            ctx.save();
+            ctx.translate(50, 50);
+            const gradient1 = ctx.createRadialGradient(0, 0, 0, 0, 0, 40);
+            gradient1.addColorStop(0, 'rgba(0, 255, 157, 0.3)');
+            gradient1.addColorStop(1, 'rgba(0, 255, 157, 0)');
+            ctx.fillStyle = gradient1;
+            ctx.beginPath();
+            ctx.arc(0, 0, 40, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+
+            // Нижний правый блик
+            ctx.save();
+            ctx.translate(width - 50, height - 50);
+            const gradient2 = ctx.createRadialGradient(0, 0, 0, 0, 0, 30);
+            gradient2.addColorStop(0, 'rgba(0, 242, 255, 0.2)');
+            gradient2.addColorStop(1, 'rgba(0, 242, 255, 0)');
+            ctx.fillStyle = gradient2;
+            ctx.beginPath();
+            ctx.arc(0, 0, 30, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        // --- СКАЧИВАНИЕ СЕРТИФИКАТА ---
+        function downloadCertificate() {
+            try {
+                const canvas = document.getElementById('certificate-canvas');
+                if (!canvas) {
+                    alert('Ошибка: Canvas не найден!');
+                    return;
+                }
+
+                const name = document.getElementById('certificate-name').value.trim() || 'cyber_explorer';
+
+                // Проверяем, что canvas имеет содержимое
+                const ctx = canvas.getContext('2d');
+                if (!ctx) {
+                    alert('Ошибка: Не удалось получить контекст canvas!');
+                    return;
+                }
+
+                // Создаем ссылку для скачивания
+                const link = document.createElement('a');
+                link.download = `cyber_certificate_${name}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+
+                alert('🎉 Ваш киберпанк сертификат скачан! Проверьте загрузки.');
+            } catch (error) {
+                console.error('Ошибка при скачивании сертификата:', error);
+                alert('Произошла ошибка при скачивании сертификата. Попробуйте снова.');
+            }
+        }
+
+        // --- АНИМАЦИЯ СЧЕТЧИКОВ ПРИ СКРОЛЛЕ ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // Функция для анимации счетчиков
+            function animateCounters() {
+                const yearsCounter = document.getElementById('years-counter');
+                const studentsCounter = document.getElementById('students-counter');
+
+                if (yearsCounter && studentsCounter) {
+                    let years = 0;
+                    let students = 0;
+                    const yearsTarget = 3;
+                    const studentsTarget = 40;
+
+                    const yearsInterval = setInterval(() => {
+                        years++;
+                        yearsCounter.textContent = years + '+';
+                        if (years >= yearsTarget) clearInterval(yearsInterval);
+                    }, 200);
+
+                    const studentsInterval = setInterval(() => {
+                        students += 2;
+                        studentsCounter.textContent = students + '+';
+                        if (students >= studentsTarget) clearInterval(studentsInterval);
+                    }, 100);
+                }
+            }
+
+            // Наблюдатель за пересечением (Intersection Observer)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Когда секция "Обо мне" появляется в viewport
+                        if (entry.target.id === 'about') {
+                            animateCounters();
+                        }
+
+                        // Анимации для других секций
+                        if (entry.target.classList.contains('animate-on-scroll')) {
+                            entry.target.classList.add('visible');
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            // Наблюдаем за секцией "Обо мне"
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                observer.observe(aboutSection);
+            }
+
+            // Наблюдаем за другими секциями для анимаций
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                if (section.id !== 'about') {
+                    section.classList.add('animate-on-scroll');
+                    observer.observe(section);
+                }
+            });
+
+            // Добавляем специальные анимации для карточек
+            const techCards = document.querySelectorAll('.tech-card');
+            techCards.forEach((card, index) => {
+                // Устанавливаем начальные стили для анимации
+                card.style.transition = 'all 0.6s ease-out';
+
+                // Наблюдаем за карточками
+                observer.observe(card);
+
+                // Уникальная анимация для каждой карточки
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.boxShadow = '0 15px 40px rgba(99, 102, 241, 0.4)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '0 10px 30px rgba(99, 102, 241, 0.3)';
+                });
+            });
+
+            // Анимация для процесс боксов
+            const processBoxes = document.querySelectorAll('.process-box');
+            processBoxes.forEach((box, index) => {
+                box.style.transition = 'all 0.6s ease-out';
+                observer.observe(box);
+            });
+
+            // Анимация для FAQ элементов
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach((item, index) => {
+                item.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
+                observer.observe(item);
+            });
+        });
+
+        // --- МАТЕМАТИЧЕСКАЯ ФОРМУЛА ПРИ ЗАГРУЗКЕ ---
+        const cyberFormulas = [
+            "∫e^x dx = e^x + C",
+            "∑(n=1 to ∞) 1/n² = π²/6",
+            "e^(iπ) + 1 = 0",
+            "∇²ψ = -4π²ψ/h²(E - V)",
+            "F = G(m₁m₂)/r²",
+            "E = mc²",
+            "∂²u/∂t² = c²∇²u",
+            "∮E·dA = Q/ε₀",
+            "∫_{-∞}^∞ e^(-x²) dx = √π",
+            "Γ(n) = ∫₀^∞ t^(n-1)e^(-t) dt"
+        ];
+
+        function showRandomFormula() {
+            const formulaElement = document.getElementById('cyberFormula');
+            const randomIndex = Math.floor(Math.random() * cyberFormulas.length);
+            formulaElement.textContent = cyberFormulas[randomIndex];
+
+            // Показываем формулу через 4 секунды после загрузки
+            setTimeout(() => {
+                formulaElement.style.animation = 'none';
+                formulaElement.style.opacity = '1';
+                formulaElement.style.transform = 'translate(-50%, -50%) scale(1)';
+
+                // Скрываем формулу через 3 секунды после показа
+                setTimeout(() => {
+                    formulaElement.style.opacity = '0';
+                    formulaElement.style.transform = 'translate(-50%, -40%) scale(0.9)';
+                }, 3000);
+            }, 4000);
+        }
+
+
         // --- ЛОГИКА ЗАДАЧИ ---
         const widget = document.getElementById('trap-widget');
         const modal = document.getElementById('quiz-modal');
@@ -475,7 +2245,10 @@
 
         widget.onclick = () => modal.style.display = 'flex';
         closeIcon.onclick = () => { modal.style.display = 'none'; errorMsg.style.display = 'none'; };
-        window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+        window.onclick = function(event) {
+            if (event.target == modal) modal.style.display = "none";
+            if (event.target == rewardModal) rewardModal.style.display = "none";
+        }
 
         function checkAnswer() {
             const val = parseFloat(input.value);
@@ -492,6 +2265,91 @@
                 errorMsg.innerHTML = "Неверно.";
             }
         }
+
+        // --- SMOOTH SCROLLING WITH LENIS ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const lenis = new Lenis({
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                smoothTouch: false,
+                touchMultiplier: 2,
+                infinite: false,
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+        });
+
+        // --- HAMBURGER MENU FUNCTIONS ---
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+
+        // --- НОВЫЕ ПАСХАЛКИ ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // Пасхалка 1: Анимация формулы
+            const formulaEgg = document.getElementById('egg1');
+            if (formulaEgg) {
+                formulaEgg.addEventListener('click', function() {
+                    this.style.animation = 'glow 1s infinite alternate';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 3000);
+                });
+            }
+
+
+
+            // Пасхалка 4: Подсветка кода
+            const codeEgg = document.getElementById('egg4');
+            if (codeEgg) {
+                codeEgg.addEventListener('click', function() {
+                    this.innerHTML = this.innerHTML.replace(/function/g, '<span style="color: var(--cyber-purple);">function</span>')
+                                                   .replace(/cyberMath/g, '<span style="color: var(--cyber-blue);">cyberMath</span>')
+                                                   .replace(/return/g, '<span style="color: var(--accent);">return</span>')
+                                                   .replace(/42/g, '<span style="color: var(--accent);">42</span>');
+                    setTimeout(() => {
+                        this.innerHTML = `<span style="color: var(--cyber-purple);">function</span> <span style="color: var(--cyber-blue);">cyberMath</span>() {<br>
+                &nbsp;&nbsp;return <span style="color: var(--accent);">42</span>;<br>
+                }`;
+                    }, 5000);
+                });
+            }
+
+            // Пасхалка 5: Шифр Цезаря
+            const cryptoEgg = document.getElementById('egg5');
+            if (cryptoEgg) {
+                cryptoEgg.addEventListener('click', function() {
+                    // Расшифровка KDFKDU с сдвигом +3: H C I B S
+                    // Сдвиг обратно на 3: H-3=C, C-3=Z, I-3=F, B-3=Y, S-3=P
+                    this.innerHTML = '<span style="color: var(--gold);">CAESAR+3:</span> <span style="color: var(--cyber-neon);">CYBER</span>';
+                    setTimeout(() => {
+                        this.innerHTML = '<span style="color: var(--cyber-purple);">Caesar</span> <span style="color: var(--cyber-neon);">+3:</span> <span style="color: var(--gold);">KDFKDU</span>';
+                    }, 5000);
+                });
+            }
+        });
+
+
+
+
     </script>
 </body>
 </html>
