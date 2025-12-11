@@ -312,23 +312,26 @@
                 margin-top: 30px; /* Дополнительный отступ сверху */
             }
 
-            /* Исправление фото: нормальный размер для мобильных */
+            /* ИСПРАВЛЕНИЕ ФОТО: Возвращаем прямоугольный вид */
             .my-photo {
-                max-width: 100% !important; /* На всю ширину контейнера */
-                width: 100% !important; 
-                height: auto !important; /* Высота авто, чтобы сохранить пропорции */
-                aspect-ratio: auto !important; /* Убираем принудительный квадрат */
+                width: 100% !important;       /* Фото на всю ширину блока */
+                max-width: 100% !important;   /* Убираем ограничение в 400px */
+                height: auto !important;      /* Высота подстраивается сама (убирает сплющивание) */
+                aspect-ratio: auto !important;/* Убираем принудительный квадрат */
+                
+                border-radius: 20px !important; /* Углы как на компьютере (было 50% - круг) */
                 object-fit: cover !important;
-                border-radius: 20px !important; /* Возвращаем скругленные углы (как на ПК) */
-                margin: 0 auto 40px auto !important;
-                box-shadow: 10px 10px 0 var(--primary) !important; /* Возвращаем фирменную тень, но чуть меньше */
-                transition: transform 0.3s ease !important;
-                display: block !important;
+                
+                margin: 0 0 30px 0 !important;  /* Отступ только снизу */
+                
+                /* Возвращаем фирменную "жесткую" тень, но чуть меньше чем на ПК */
+                box-shadow: 10px 10px 0 var(--primary) !important; 
+                transform: none !important;
             }
 
             .my-photo:hover {
-                transform: translate(-5px, -5px) !important; /* Легкая анимация при нажатии */
-                box-shadow: 15px 15px 0 var(--accent) !important;
+                transform: translate(-3px, -3px) !important;
+                box-shadow: 13px 13px 0 var(--accent) !important;
             }
 
             /* Улучшение читабельности текста "обо мне" */
