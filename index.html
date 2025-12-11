@@ -312,24 +312,30 @@
                 margin-top: 30px; /* Дополнительный отступ сверху */
             }
 
-            /* ИСПРАВЛЕНИЕ ФОТО: Нормальный размер, прямоугольник */
+            /* ЖЕСТКОЕ ИСПРАВЛЕНИЕ ФОТО */
             .my-photo {
-                width: 100% !important;        /* Растянуть на всю ширину экрана */
-                height: auto !important;       /* Высота подбирается сама (пропорционально) */
-                max-width: none !important;    /* Убираем ограничение размера */
+                /* Сбрасываем все ограничения формы */
+                border-radius: 20px !important; /* Скругленные углы, но НЕ круг */
+                aspect-ratio: unset !important; /* Отключаем квадратную пропорцию */
                 
-                aspect-ratio: auto !important; /* Убираем квадратную форму/овал */
-                border-radius: 20px !important; /* Скругленные углы (как на ПК) */
+                /* Размеры */
+                width: 100% !important;      /* На всю ширину */
+                max-width: 100% !important;  /* Убираем лимиты */
+                height: auto !important;     /* Высота авто (чтобы не сплющило) */
+                min-height: 300px !important; /* Минимальная высота, чтобы фото было крупным */
+                
+                /* Позиция */
+                margin: 0 0 30px 0 !important;
                 object-fit: cover !important;
+                display: block !important;
                 
-                margin: 0 0 30px 0 !important; /* Отступ 30px СНИЗУ до текста */
-                
-                box-shadow: 10px 10px 0 var(--primary) !important; /* Тень-подложка */
+                /* Тень как на ПК */
+                box-shadow: 10px 10px 0 var(--primary) !important;
                 transform: none !important;
             }
 
             .my-photo:hover {
-                transform: none !important; /* Убираем дергание при касании */
+                transform: none !important;
             }
 
             /* Улучшение читабельности текста "обо мне" */
