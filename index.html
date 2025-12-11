@@ -314,20 +314,21 @@
 
             /* Исправление фото: нормальный размер для мобильных */
             .my-photo {
-                max-width: 400px !important; /* Нормальный размер для мобильных */
-                width: 90% !important; /* Адаптивная ширина */
-                aspect-ratio: 1 / 1 !important; /* Квадратное соотношение сторон */
-                object-fit: cover !important; /* Заполняет круг без искажения */
-                border-radius: 50% !important; /* Круглая форма */
-                margin: 0 auto 40px auto !important; /* Центрирование */
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; /* Легкая тень */
-                transition: transform 0.3s ease !important; /* Анимация при наведении */
+                max-width: 100% !important; /* На всю ширину контейнера */
+                width: 100% !important; 
+                height: auto !important; /* Высота авто, чтобы сохранить пропорции */
+                aspect-ratio: auto !important; /* Убираем принудительный квадрат */
+                object-fit: cover !important;
+                border-radius: 20px !important; /* Возвращаем скругленные углы (как на ПК) */
+                margin: 0 auto 40px auto !important;
+                box-shadow: 10px 10px 0 var(--primary) !important; /* Возвращаем фирменную тень, но чуть меньше */
+                transition: transform 0.3s ease !important;
                 display: block !important;
-                box-sizing: border-box !important;
             }
 
             .my-photo:hover {
-                transform: scale(1.05) !important; /* Легкое увеличение при наведении */
+                transform: translate(-5px, -5px) !important; /* Легкая анимация при нажатии */
+                box-shadow: 15px 15px 0 var(--accent) !important;
             }
 
             /* Улучшение читабельности текста "обо мне" */
