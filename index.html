@@ -312,26 +312,24 @@
                 margin-top: 30px; /* Дополнительный отступ сверху */
             }
 
-            /* ИСПРАВЛЕНИЕ ФОТО: Возвращаем прямоугольный вид */
+            /* ИСПРАВЛЕНИЕ ФОТО: Нормальный размер, прямоугольник */
             .my-photo {
-                width: 100% !important;       /* Фото на всю ширину блока */
-                max-width: 100% !important;   /* Убираем ограничение в 400px */
-                height: auto !important;      /* Высота подстраивается сама (убирает сплющивание) */
-                aspect-ratio: auto !important;/* Убираем принудительный квадрат */
+                width: 100% !important;        /* Растянуть на всю ширину экрана */
+                height: auto !important;       /* Высота подбирается сама (пропорционально) */
+                max-width: none !important;    /* Убираем ограничение размера */
                 
-                border-radius: 20px !important; /* Углы как на компьютере (было 50% - круг) */
+                aspect-ratio: auto !important; /* Убираем квадратную форму/овал */
+                border-radius: 20px !important; /* Скругленные углы (как на ПК) */
                 object-fit: cover !important;
                 
-                margin: 0 0 30px 0 !important;  /* Отступ только снизу */
+                margin: 0 0 30px 0 !important; /* Отступ 30px СНИЗУ до текста */
                 
-                /* Возвращаем фирменную "жесткую" тень, но чуть меньше чем на ПК */
-                box-shadow: 10px 10px 0 var(--primary) !important; 
+                box-shadow: 10px 10px 0 var(--primary) !important; /* Тень-подложка */
                 transform: none !important;
             }
 
             .my-photo:hover {
-                transform: translate(-3px, -3px) !important;
-                box-shadow: 13px 13px 0 var(--accent) !important;
+                transform: none !important; /* Убираем дергание при касании */
             }
 
             /* Улучшение читабельности текста "обо мне" */
