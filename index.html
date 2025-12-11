@@ -312,17 +312,22 @@
                 margin-top: 30px; /* Дополнительный отступ сверху */
             }
 
-            /* Исправление фото: показываем полное изображение без обрезки */
+            /* Исправление фото: круглая форма как в первом коммите */
             .my-photo {
-                height: 500px !important; /* Увеличена высота для полного показа фото */
+                max-width: 300px !important; /* Компактный размер */
                 width: 100% !important;
-                max-width: 450px !important; /* Значительно увеличена максимальная ширина */
-                object-fit: contain !important; /* Показываем полное фото без обрезки */
-                margin: 0 auto 40px auto !important; /* Увеличен нижний отступ */
-                border-radius: 25px !important; /* Более мягкий border-radius */
+                aspect-ratio: 1 / 1 !important; /* Квадратное соотношение сторон */
+                object-fit: cover !important; /* Заполняет круг без искажения */
+                border-radius: 50% !important; /* Круглая форма */
+                margin: 0 auto 40px auto !important; /* Центрирование */
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; /* Легкая тень */
+                transition: transform 0.3s ease !important; /* Анимация при наведении */
                 display: block !important;
                 box-sizing: border-box !important;
-                background-color: transparent !important; /* Прозрачный фон */
+            }
+
+            .my-photo:hover {
+                transform: scale(1.05) !important; /* Легкое увеличение при наведении */
             }
 
             /* Улучшение читабельности текста "обо мне" */
