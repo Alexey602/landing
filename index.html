@@ -312,28 +312,36 @@
                 margin-top: 30px; /* Дополнительный отступ сверху */
             }
 
-            /* ЖЕСТКОЕ ИСПРАВЛЕНИЕ ФОТО */
-            .my-photo {
-                /* Сбрасываем все ограничения формы */
-                border-radius: 20px !important; /* Скругленные углы, но НЕ круг */
-                aspect-ratio: unset !important; /* Отключаем квадратную пропорцию */
-                
-                /* Размеры */
-                width: 100% !important;      /* На всю ширину */
-                max-width: 100% !important;  /* Убираем лимиты */
-                height: auto !important;     /* Высота авто (чтобы не сплющило) */
-                min-height: 300px !important; /* Минимальная высота, чтобы фото было крупным */
-                
-                /* Позиция */
-                margin: 0 0 30px 0 !important;
-                object-fit: cover !important;
-                display: block !important;
-                
-                /* Тень как на ПК */
-                box-shadow: 10px 10px 0 var(--primary) !important;
-                transform: none !important;
+            /* 1. ГЛАВНОЕ ИСПРАВЛЕНИЕ: Ломаем сетку, ставим элементы в столбик */
+            .about-grid {
+                display: flex !important;          /* Переключаем на гибкий контейнер */
+                flex-direction: column !important; /* Строго вертикально: фото сверху, текст снизу */
+                align-items: center !important;    /* Центрируем всё */
+                gap: 30px !important;              /* Расстояние между фото и текстом */
             }
 
+            /* 2. Растягиваем контейнер фото на всю ширину */
+            .my-photo-container {
+                width: 100% !important;
+                display: block !important;
+                margin: 0 !important;
+            }
+
+            /* 3. Делаем само фото большим и красивым */
+            .my-photo {
+                width: 100% !important;            /* Теперь фото займет весь экран по ширине */
+                height: auto !important;           /* Высота подстроится сама */
+                aspect-ratio: auto !important;     /* Убираем квадрат/овал */
+                
+                border-radius: 20px !important;    /* Скругленные углы */
+                object-fit: cover !important;
+                
+                box-shadow: 10px 10px 0 var(--primary) !important; /* Тень */
+                transform: none !important;
+                margin: 0 !important;
+            }
+
+            /* Отключаем дергание при клике на телефоне */
             .my-photo:hover {
                 transform: none !important;
             }
