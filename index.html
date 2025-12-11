@@ -31,6 +31,60 @@
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.38/lenis.min.js" defer></script>
 
     <style>
+        /* --- АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА (добавить в конец CSS) --- */
+
+        @media screen and (max-width: 768px) {
+
+        /* 1. ИСПРАВЛЕНИЕ: "Твой ментор по" (слишком большой шрифт) */
+        h1 {
+            font-size: 32px !important; /* Уменьшаем размер (было слишком крупно) */
+            line-height: 1.2;
+            padding-top: 20px; /* Небольшой отступ сверху */
+        }
+
+        /* 2. ИСПРАВЛЕНИЕ: Печатающая машинка (слишком маленький шрифт) */
+        /* Ищем элементы, похожие на подзаголовки или специальный класс машинки */
+        p.typewriter, .typewriter, .subtitle {
+            font-size: 20px !important; /* Увеличиваем размер (было мелко) */
+            min-height: 30px; /* Чтобы текст не прыгал при печати */
+        }
+
+        /* 3. ИСПРАВЛЕНИЕ: Фото (слишком маленькое) */
+        /* Делаем фото крупнее, но не шире экрана */
+        img.avatar, .hero-image img, .photo {
+            width: 260px !important; /* Значительно увеличиваем ширину */
+            height: auto;
+            max-width: 80%; /* Ограничение, чтобы не вылезло за экран */
+            margin: 20px auto; /* Центрирование */
+            display: block;
+        }
+
+        /* 4. ИСПРАВЛЕНИЕ: Карточки съезжают за темный фон */
+        /* Проблема возникает из-за фиксированной высоты (100vh) у главного блока */
+        
+        /* Снимаем ограничение высоты у главной секции (темный фон) */
+        header, .main-screen, .cover, .hero {
+            height: auto !important; 
+            min-height: 100vh; /* Минимально на весь экран, но может растягиваться */
+            padding-bottom: 60px; /* Место внизу для карточек */
+        }
+
+        /* Настраиваем контейнер карточек, чтобы они встали в колонку */
+        .cards-container, .features, .cards {
+            display: flex;
+            flex-direction: column; /* Вертикальный список */
+            align-items: center;
+            position: static !important; /* Если они были position: absolute */
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        /* Если карточки имеют фиксированную ширину, сбрасываем её */
+        .card-item, .feature-card {
+            width: 90% !important;
+            margin-bottom: 15px;
+        }
+        }
         /* --- 1. ПЕРЕМЕННЫЕ --- */
         :root {
             --primary: #3730a3;      /* Более глубокий индиго */
