@@ -274,8 +274,17 @@
             .mobile-menu { display: none; }
             .mobile-menu.active { display: flex; }
 
-            /* Мобильная оптимизация */
-            .hero h1 { font-size: 3rem; }
+            /* Мобильная оптимизация (С ПОПРАВКАМИ) */
+            .hero {
+                min-height: auto; /* Исправление: разрешаем секции растягиваться */
+                padding-top: 120px;
+                padding-bottom: 80px;
+            }
+            .section-light {
+                margin-top: 0; /* Исправление: убираем отрицательный отступ, чтобы карточки не наезжали */
+            }
+
+            .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1.1rem; }
             .about-grid { grid-template-columns: 1fr; gap: 40px; }
             .my-photo { height: 400px; }
@@ -289,15 +298,35 @@
         }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { 
+                font-size: 1.8rem; /* Исправление: Уменьшен шрифт "Твой ментор по" */
+            }
+            .hero-title-main {
+                display: block; /* Перенос на новую строку */
+                margin-bottom: 10px;
+            }
             .hero p { font-size: 1rem; }
             .hero { padding-bottom: 60px; }
             .hero-buttons { flex-direction: column; gap: 15px; }
-            .my-photo { height: 500px; object-fit: contain; margin: 20px auto; }
+            
+            /* Исправление фото: увеличиваем и ставим cover */
+            .my-photo { 
+                height: 350px; 
+                width: 100%;
+                object-fit: cover; 
+                margin: 0 auto 20px auto; 
+            }
+            
             .tech-card { padding: 20px; }
             .faq-container { padding: 0 10px; }
             .footer-box { padding: 40px 20px; }
-            .typewriter { font-size: 1.3rem; line-height: 1.2; }
+            
+            /* Исправление: увеличиваем печатную машинку */
+            .typewriter { 
+                font-size: 2rem; 
+                line-height: 1.3; 
+                display: block;
+            }
         }
 
         @media (min-width: 1200px) {
@@ -612,7 +641,7 @@
                 font-size: 3.5rem; /* Уменьшаем еще больше для лучшей стабильности */
             }
             .typewriter {
-                white-space: nowrap; /* Предотвращаем перенос строк в typewriter */
+                white-space: normal; /* Разрешаем перенос */
             }
         }
 
