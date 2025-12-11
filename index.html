@@ -312,16 +312,17 @@
                 margin-top: 30px; /* Дополнительный отступ сверху */
             }
 
-            /* Исправление фото: делаем шире и пропорциональным - УСИЛЕННЫЕ СТИЛИ */
+            /* Исправление фото: показываем полное изображение без обрезки */
             .my-photo {
-                height: 400px !important; /* Оптимальная высота для хороших пропорций */
+                height: 500px !important; /* Увеличена высота для полного показа фото */
                 width: 100% !important;
                 max-width: 450px !important; /* Значительно увеличена максимальная ширина */
-                object-fit: cover !important;
+                object-fit: contain !important; /* Показываем полное фото без обрезки */
                 margin: 0 auto 40px auto !important; /* Увеличен нижний отступ */
                 border-radius: 25px !important; /* Более мягкий border-radius */
                 display: block !important;
                 box-sizing: border-box !important;
+                background-color: transparent !important; /* Прозрачный фон */
             }
 
             /* Улучшение читабельности текста "обо мне" */
